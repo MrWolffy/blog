@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>REGISTER</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500" />
+    <link rel="stylesheet" href="../static/css/bootstrap.css" />
+    <link rel="stylesheet" href="../static/css/font-awesome.css" />
+    <link rel="stylesheet" href="../static/css/form-elements.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    <!-- Favicon and touch icons -->
+    <link rel="shortcut icon" href="../static/ico/favicon.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../static/ico/apple-touch-icon-144-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../static/ico/apple-touch-icon-114-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../static/ico/apple-touch-icon-72-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="../static/ico/apple-touch-icon-57-precomposed.png" />
+    <style>
+        .alert{display: none}
+    </style>
+</head>
+<body>
+<!-- Top content -->
+<div class="top-content">
+    <div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text">
+                    <h1>简单教程<small>注册</small></h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 form-box">
+                    <div class="form-top">
+                        <div class="form-top-left">
+                            <h3>注册</h3>
+                            <p>注册一个新的账号</p>
+                        </div>
+                        <div class="form-top-right">
+                            <i class="fa fa-key"></i>
+                        </div>
+                    </div>
+                    <div class="form-bottom">
+                        <form role="form"  method="post" class="login-form" action="{{ url_for('base_bp.register') }}">
+                            {{ form.hidden_tag() }}
+                            <div class="form-group">
+                                <label class="sr-only" for="form-username">Username</label> 用户名
+                                <!--使用WTForms渲染input时，<input>的 name 属性默认为 form.<%name>里的name -->
+                                {{ form.username(type="text", placeholder="请输入您的用户名", class="form-username form-control", id="form-username") }}
+                                <div class="alert alert-success" role="alert" id="username-alert-success">此用户名可以使用！</div>
+                                <div class="alert alert-danger" role="alert" id="username-alert-danger">此用户名已被占用，您需要重新输入一个用户名！</div>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-email">Email</label> 邮箱
+                                {{ form.email(type="text", placeholder="请输入您的邮箱", class="form-username form-control", id="form-email") }}
+                                <div class="alert alert-success" role="alert" id="email-alert-success">此邮箱可以使用！</div>
+                                <div class="alert alert-danger" role="alert" id="email-alert-danger">此邮箱已被占用，您需要重新输入一个邮箱！</div>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-password">Password</label> 密码
+                                {{ form.password(type="password", placeholder="请输入您的密码", class="form-password form-control", id="form-password") }}
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="form-repassword">Password</label> 确认密码
+                                {{ form.repassword(type="password", placeholder="请重新输入您的密码", class="form-password form-control", id="form-repassword") }}
+                                <div class="alert alert-danger" role="alert" id="repassword-alert-danger">两次输入的密码不一致，请检查！</div>
+                            </div>
+                            <button type="submit" class="btn">注册</button>
+                            <a href="{{ url_for('base_bp.login') }}" class="pull-right">已有账号</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Javascript -->
+<script src="../static/js/jquery.js"></script>
+<script src="../static/js/bootstrap.js"></script>
+<script src="../static/js/jquery.backstretch.min.js"></script>
+<script src="../static/js/scripts.js"></script>
+<script src="../static/js/register.js"></script>
+<!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+</body>
+</html>

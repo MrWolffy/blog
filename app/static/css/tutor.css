@@ -1,0 +1,79 @@
+
+.side-link{
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    font-family: "微软雅黑 Light";
+}
+
+.nav-pills>li.active>a{ background: #35abd9!important; color: white}
+
+#side-index{ color: gray}
+
+.side a{
+    padding-top: 0!important;
+    padding-bottom:0!important;
+}
+
+.side{border-right: solid #ccc 1px;}
+
+.main-text{
+    font-size: 18px;
+}
+
+.main-text-header{margin-bottom: 10px; border-bottom: solid #ccc 1px;}
+
+.comment-block{ margin-top: 50px;}
+
+/* .comment-content-wrap{ display: none;} */
+
+.comment-header-avatar{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.comment-header-title{
+    font: normal 24px/50px arial, "微软雅黑 Light";
+    padding-left: 20px;
+}
+
+.comment-detail{
+    margin-top: 10px;
+    font: normal 18px/50px arial, "微软雅黑 Light";
+}
+
+#more:hover{ cursor: pointer}
+
+.dataintable, tr, td{
+    border: solid #ccc 2px;
+    border-collapse: collapse;
+}
+
+/* 所有教程都可适用的部分 */
+.main-content{
+    background: #f3f3f3;
+}
+.content-wrap{
+    background: #ffffff;
+    border-radius: 10px;
+
+}
+.side{
+    margin-top: 100px;
+    /*margin-right: 30px;*/
+
+}
+.content{
+    margin-top: 100px;
+}
+.main-text{
+    line-height: 36px;
+}
+/* 模态框样式 */
+.modal-header{
+    background: #3367d6;
+    color: #ffffff;
+}
+

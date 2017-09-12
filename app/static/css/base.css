@@ -1,0 +1,68 @@
+*{margin: 0 auto; text-decoration: none; list-style: none}
+
+/* navbar部分 */
+.navbar{
+    border: none;
+}
+
+.navbar-brand{
+    padding-top: 9px;
+    padding-bottom: 9px;
+    font-size: 30px;
+    line-height: 32px;
+    color: #fff !important
+}
+
+.navbar-nav .open a:focus{
+    background-color: #3f8fd2!important;
+}
+
+.header{ background: #35a9d8;}
+
+.header-link{
+    color: #fff !important;
+    text-decoration: none;
+    font-size: 20px !important;
+    font-family: "微软雅黑 Light";
+}
+
+.header-link:hover{
+    color: #fff !important;
+    text-decoration: none;
+    font-size: 20px !important;
+    font-family: "微软雅黑 Light";
+    background-color: #3f8fd2!important;
+}
+
+.word-1{ font-size: 35px; font-family: "微软雅黑 Light"; color: #fff; text-align: center; line-height: 50px}
+
+.word-2{ font-size: 22px; font-family: "微软雅黑 Light"; color: #fff; text-align: center; line-height: 50px}
+
+.word-1:hover, .word-2:hover{
+    background:#3f8fd2;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+}
+/* navbar 结束 */
+
+.footer{
+    background: #222;
+    font: normal 14px/14px arial, "微软雅黑 Light";
+    text-align: center;
+    color: #fff;
+}
+
+#sign-in{ color: white}
+
+.f-link{
+    height: 30px;
+    line-height: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.blank-vertical{ height: 40px;}
+
+a.more-link, #header-username{ color: #fff}
+

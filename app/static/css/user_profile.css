@@ -1,0 +1,65 @@
+.main-content{
+    background: #f3f3f3;
+}
+
+.user-header{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background: #ffffff;
+    border-radius: 5px;
+}
+/*
+#avatar{
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+}
+*/
+.user-info{
+    margin-top: 60px;
+}
+
+.shade{
+    text-shadow: black 5px 3px 3px;
+}
+
+#user-name{
+    font: normal 32px/34px arial, "微软雅黑 Light";
+}
+
+.user-article{
+    background: #ffffff;
+    border-radius: 5px;
+}
+
+ul li{
+    font: normal 20px/26px arial, "微软雅黑 Light";
+}
+
+.article{
+    margin: 20px 20px 20px 20px;
+}
+
+.inform{
+    font: normal 16px/24px arial, "微软雅黑 Light";
+}
+
+.user-article{
+    margin-bottom: 100px;
+    padding-bottom: 80px;
+}
+
+/* modal 部分*/
+
+.modal-header{
+    background: #3367d6;
+    color: #ffffff;
+}
+
+/* 警告框部分 */
+.alert{
+    display: none;
+}
+
