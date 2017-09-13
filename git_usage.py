@@ -28,6 +28,8 @@ $ git checkout --<filename>
 $ git remote add origin git@github.com:<my email>/<my project>.git  链接远程仓库
 $ git push -u origin master   初始化
 $ git push origin master      本地仓库修改后上传
+$ git pull                    从远程仓库抓取变化，每次编辑本地仓库之前先pull一遍，保证后面能正常push
+
 
 '''
 
