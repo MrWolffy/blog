@@ -18,3 +18,4 @@ print(reduce(lambda x, y: x.permission | y.permission, test_user.role))
 print(1 | 2)
 print(reduce(lambda x, y: x | y, [1]))
 # this is the newest info
+# this is the second newest info
