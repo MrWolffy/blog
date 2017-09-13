@@ -1,0 +1,6 @@
+# my configuration file
+config.py
+.idea/
+app/static/images
+
+
