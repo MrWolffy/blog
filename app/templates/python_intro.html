@@ -140,18 +140,21 @@
                 <div class="comment-content-wrap panel-body">
                     <ul class="comment-content list-group">
                         {% for com in comment %}
-                        <li class="comment list-group-item clearfix">
-                            <div class="comment-header row">
-                                <span class="col-md-2">
-                                    <img id="test" class="comment-header-avatar img-responsive" src="{{ com.speaker_avatar }}">
-                                </span>
-                                <span class="comment-header-title col-md-10">
+                        <li class="comment list-group-item clearfix row">
+                            <div class="comment-avatar col-md-2">
+                                <img id="test" class="comment-header-avatar img-responsive" src="{{ com.speaker_avatar }}">
+                            </div>
+                            <div class="comment-header col-md-9">
+
+                                <div class="comment-header-title col-md-10">
                                     <strong>{{ com.title }}</strong>
-                                </span>
+                                </div>
+
+                                <div class="comment-detail col-md-9">
+                                    {{ com.content }}
+                                </div>
                             </div>
-                            <div class="comment-detail col-md-offset-2 col-md-9">
-                                {{ com.content }}
-                            </div>
+
                             <div class="comment-from">
                                 <p class="pull-right">
                                     by: {{ com.speaker }}&nbsp;&nbsp;&nbsp;
