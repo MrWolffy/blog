@@ -3,6 +3,7 @@
 from config import ADMIN_EMAIL, UPLOAD_FOLDER
 from flask import Blueprint, render_template, request, g, session, redirect, url_for, flash
 from flask_login import login_user, logout_user, current_user, login_required
+from flask_mail import Message
 from app import app, db, lm
 from ..models import *
 import json, os
@@ -173,6 +174,14 @@ def avatar_change():
         db.session.add(current_user)
         db.session.commit()
     return redirect('user/{}'.format(current_user.username))
+
+
+# 修改密码
+@login_required
+@base_bp.route('/password_change/<certification_id>')
+def password_change(certification_id):
+    mes = Message()
+    return
 
 
 @base_bp.route('/logout')
