@@ -7,6 +7,9 @@
         .main-content{
             margin-top: 50px;
         }
+        #change-avatar-input{
+            display: none;
+        }
     </style>
 
 {% endblock %}
@@ -16,7 +19,14 @@
         <div class="container">
             <div class="row user-header">
                 <div class="avatar col-md-2 col-md-offset-1">
-                    <a href="#"><img src="{{ current_user.avatar }}" class="img-rounded img-responsive" id="avatar"></a>
+                    <a href="#" class="tooltip-test" data-toggle="tooltip" title="<h5>点击头像可以更换头像</h5>">
+                        <img src="{{ current_user.avatar }}" class="img-rounded img-responsive" id="avatar-tri">
+                        <button class="btn btn-primary" style="display: none; width: 100%" id="change-avatar-button">上传头像</button>
+                        <form style="display: none" action="{{ url_for('base_bp.avatar_change') }}" method="post" enctype="multipart/form-data">
+                            <input type="file" name="change-avatar" id="change-avatar-input">
+                            <input type="submit" id="change-avatar-submit">
+                        </form>
+                    </a>
                 </div>
                 <div class="user-info col-md-9">
                     <div class="user-name col-md-10 ">
@@ -146,4 +156,5 @@
     </div>
     <script type="text/javascript" src="../static/js/user_profile.js"></script>
     <script type="text/javascript" src="../static/js/edit.js"></script>
+    <script></script>
 {% endblock %}

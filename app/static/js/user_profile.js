@@ -13,3 +13,16 @@ $('#wrote-tab').click(function(){
     $('#interested-article').fadeOut();
     $('#wrote-article').fadeIn();
 });
+/** change avatar */
+$('#change-avatar-button').click(function(){
+    $('#change-avatar-submit').click();
+});
+$('#avatar-tri').click(function(){
+    $('#change-avatar-input').click();
+    $('#change-avatar-button').css('display', 'block')
+});
+/** start tooltip */
+$("[data-toggle='tooltip']").tooltip(
+    {html: true}
+);
+console.log('tooltip started');

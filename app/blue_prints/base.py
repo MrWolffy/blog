@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from config import ADMIN_EMAIL
+from config import ADMIN_EMAIL, UPLOAD_FOLDER
 from flask import Blueprint, render_template, request, g, session, redirect, url_for, flash
 from flask_login import login_user, logout_user, current_user, login_required
 from app import app, db, lm
 from ..models import *
-import json
+import json, os
 from ..forms import UserRegisterForm, LoginForm, SuggestionForm, EditForm
 from functools import reduce
 from datetime import datetime
@@ -154,6 +154,27 @@ def user(username):
     return render_template('user_profile.html')
 
 
+# 修改头像
+@login_required
+@base_bp.route('/avatar_change', methods=['GET', 'POST'])
+def avatar_change():
+    avatar = request.files['change-avatar']
+    if avatar:
+        f_name = avatar.filename
+        ALLOWED_EXTENTIONS = ['png', 'jpg', 'jpeg', 'gif']
+        flag = '.' in f_name and f_name.rsplit('.', 1)[1] in ALLOWED_EXTENTIONS
+        if not flag:
+            flash('文件类型错误。')
+            return redirect('user/{}'.format(current_user.username))
+        avatar.save('{}/{}_{}'.format(UPLOAD_FOLDER, current_user.username, f_name))
+        if current_user.avatar != '../static/images/avatar/default.png':
+            os.remove(os.getcwd() + '/app{}'.format(current_user.avatar))
+        current_user.avatar = '/static/images/avatar/{}_{}'.format(current_user.username, f_name)
+        db.session.add(current_user)
+        db.session.commit()
+    return redirect('user/{}'.format(current_user.username))
+
+
 @base_bp.route('/logout')
 @login_required
 def logout():
@@ -161,7 +182,7 @@ def logout():
     return redirect(url_for('base_bp.home'))
 
 
-# ajax 提交评论
+# 提交评论
 @base_bp.route('/comment_get/<article_id>', methods=['GET', 'POST'])
 def comment_get(article_id):
     article = Article.query.filter_by(id=article_id).first()
