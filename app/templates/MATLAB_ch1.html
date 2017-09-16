@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% block sub_title %}&nbsp;1 概述{% endblock %}
+
+{% block morelink %}
+<link rel="stylesheet" href="../static/css/tutor.css">
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="main-body container">
+        {% for message in get_flashed_messages(with_categories=True) %}
+            <div class="alert alert-{{ message[1] }} flash-message" style="display: block; margin-top: 100px;">
+                <h2>{{ message[0] }}</h2>
+            </div>
+        {% endfor %}
+        <div class="col-md-3 side content-wrap">
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation" class="side-link" id="side-index">
+                    <span class="icon icon-book"></span>&nbsp;目录
+                </li>
+                <li role="presentation" class="side-link active">
+                    <a href="{{ url_for('python_bp.intro') }}">{{ article.name }}</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">1 概述</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">2 开始</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">3 MATLAB编程入门</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">4 数据类型</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">5 数组与矩阵</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">6 MATLAB编程进阶</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9 content content-wrap">
+            <div class="main-text-header">
+                <h2>1 概述&nbsp;&nbsp;&nbsp;<small>2017.09.16</small></h2>
+            </div>
+            <div class="main-text">
+                <h3>MATLAB简介</h3>
+                <p>MATLAB是矩阵实验室（Matrix Laboratory）的简称，是一种用于算法开发、数据可视化、数据分析以及数值计算的高级技术计算语言和交互式环境。MATLAB的应用范围非常广，包括信号和图像处理、通信、控制系统设计、测试和测量、财务建模和分析，以及计算生物学等众多应用领域。附加的工具箱（单独提供的专用MATLAB函数集扩展了MATLAB的使用环境，以解决这些应用领域内特定类型的问题。</p>
+
+                <h3>MATLAB的主要特点</h3>
+                <p>MATLAB以其良好的开放性和运行的可靠性，已经成为国际控制界公认的标准计算机软件，在国际上30多个数学类科技应用软件中，MATLAB在数值计算方面独占鳌头。</p>
+                <p>（1）计算功能强大。</p>
+                <p>（2）绘图非常方便。在Fortran和C语言中，绘图都很不容易，但在MATLAB里，数据的可视化非常简单。而且，MATLAB还具有较强的编辑图形界面的能力。</p>
+                <p>（3）功能强大的工具箱是MATLAB的另一特色。MATLAB包含两个部分：核心部分和各种可选的工具箱。核心部分有数百个核心内部函数。除内部函数以外，MATLAB的所有核心文件和工具箱文件都是可读可写的源文件，用户可通过对源文件等修改以及加入自己的文件构成新的工具箱。</p>
+                <p>（4）帮助功能完整。自带的帮助功能是非常强大的帮助手册。</p>
+                
+                <h3>关于本教程</h3>
+                <p>本教程基于MATLAB 2016b for Mac编写，主要面向北京大学经济、金融相关专业的在校学生。本教程在现有其他MATLAB教程的基础上，删去了大量与经济、金融无关的内容，简化较难或不常用到的内容，以求降低难度、快速入门。<span style="color: red">本教程假设学习者已经具备最基本的编程知识</span>，如逻辑运算、三种程序基本结构等。</p>                         
+            </div>
+
+            <div class="comment-block">
+            <div class="panel panel-info">
+
+                <div class="comment-title panel-heading">
+                    <h3>Comments
+                        <a id="comment-switch"><small>switch</small></a>
+                        {% if current_user.username %}
+                        <a id="comment-button" class="pull-right" data-toggle="modal" data-target="#comment-form"><small>发表评论</small></a>
+                        {% else %}
+                        <a id="comment-info" class="pull-right" href="{{ url_for('base_bp.login') }}"><small>登录后可以评论</small></a>
+                        {% endif %}
+                    </h3>
+                </div>
+
+                {% if comment %}
+                <div class="comment-content-wrap panel-body">
+                    <ul class="comment-content list-group">
+                        {% for com in comment %}
+                        <li class="comment list-group-item clearfix row">
+                            <div class="comment-avatar col-md-2">
+                                <img id="test" class="comment-header-avatar img-responsive" src="{{ com.speaker_avatar }}">
+                            </div>
+                            <div class="comment-header col-md-9">
+
+                                <div class="comment-header-title col-md-10">
+                                    <strong>{{ com.title }}</strong>
+                                </div>
+
+                                <div class="comment-detail col-md-9">
+                                    {{ com.content }}
+                                </div>
+                            </div>
+
+                            <div class="comment-from">
+                                <p class="pull-right">
+                                    by: {{ com.speaker }}&nbsp;&nbsp;&nbsp;
+                                    posted: {{ com.posted }}
+                                </p>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% else %}
+                    <div class="comment-content-wrap panel-body">
+                        <h2>本文章还没有评论，快去成为第一个评论者吧！</h2>
+                    </div>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 模态框 -->
+<div class="modal fade" id="comment-form" tabindex="-1" role="dialog" aria-labelledby="comment-form" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">编辑评论内容</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" method="post" action="/comment_get/{{ article.id }}">
+                    <div class="form-group">
+                        <label for="title" class="col-sm-2 control-label">主题</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="comment-title" name="title" placeholder="请输入主题">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="content" class="col-sm-2 control-label">内容</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="comment-content" name="content" placeholder="请输入具体内容" rows="5"></textarea>
+                        </div>
+                    </div>
+
+                    <input type="submit" id="comment-submit" style="display: none">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button id="comment-submit-button" type="button" class="btn btn-primary">提交</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<!-- 模态框结束 -->
+<script src="../static/js/tutor.js"></script>
+{% endblock %}
+
