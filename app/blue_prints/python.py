@@ -13,9 +13,11 @@ def intro():
     a_id = 1
     article = Article.query.filter_by(id=a_id).first()
     comment = Comment.query.filter_by(article_id=article.id).all()
+    user = [User.query.filter_by(id=com.user_id).first() for com in comment]
+    user_comment = zip(user, comment)
     return render_template('python_intro.html',
                            article=article,
-                           comment=comment)
+                           user_comment=user_comment)
 
 
 @python_bp.route('/2nd')
@@ -23,8 +25,10 @@ def sec_chapter():
     a_id = 2
     article = Article.query.filter_by(id=a_id).first()
     comment = Comment.query.filter_by(article_id=article.id).all()
-    return render_template('python_2.html',
+    user = [User.query.filter_by(id=com.user_id).first() for com in comment]
+    user_comment = zip(user, comment)
+    return render_template('python_intro.html',
                            article=article,
-                           comment=comment)
+                           user_comment=user_comment)
 
 app.register_blueprint(python_bp)

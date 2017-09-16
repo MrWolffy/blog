@@ -42,7 +42,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(32), unique=True, index=True)
     email = db.Column(db.String(64), unique=True, index=True)
-    sign = db.Column(db.String(255), index=True)
+    sign = db.Column(db.String(255), index=True, default='这个人比较懒，什么都没有留下。')
     password_hash = db.Column(db.String(220), index=True)
     role = db.relationship('Role', secondary=user_role_table, backref=db.backref('user_role', lazy='dynamic'))
     comment = db.relationship('Comment', backref=db.backref('provider'))

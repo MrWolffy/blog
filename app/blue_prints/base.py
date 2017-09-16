@@ -1,18 +1,37 @@
 # -*- coding: utf-8 -*-
 
 from config import ADMIN_EMAIL, UPLOAD_FOLDER
-from flask import Blueprint, render_template, request, g, session, redirect, url_for, flash
+from flask import Blueprint, render_template, request, g, session, redirect, url_for, flash, current_app
 from flask_login import login_user, logout_user, current_user, login_required
 from flask_mail import Message
-from app import app, db, lm
+from app import app, db, lm, mail
 from ..models import *
 import json, os
+from threading import Thread
 from ..forms import UserRegisterForm, LoginForm, SuggestionForm, EditForm
 from functools import reduce
 from datetime import datetime
 
 # 创建蓝图
 base_bp = Blueprint('base_bp', __name__, url_prefix='')
+
+
+# 异步发送邮件方法
+def send_async_email(app,msg):
+    with app.app_context():
+        mail.send(msg)
+
+
+def send_email(to, subject, template, **kwargs):
+    app = current_app._get_current_object()
+    msg = Message(subject,
+                    recipients=[to])
+    # msg.body = render_template(template + '.txt', **kwargs)
+    msg.html = render_template(template + '.html', **kwargs)
+    # 在新线程中发送邮件
+    thr = Thread(target=send_async_email, args=[app, msg])
+    thr.start()
+    return thr
 
 
 # 加载已登录的用户
@@ -81,7 +100,10 @@ def register():
             user.role.append(Role.query.filter_by(id=4).first())
         db.session.add(user)
         db.session.commit()
-        session.username = user.username
+
+        # 异步发送欢迎邮件
+        send_email(user.email, '欢迎注册eztutor', 'welcome_mail', user=user)
+
         return redirect(url_for('base_bp.login'))
     return render_template('register.html', form=form)
 
@@ -176,11 +198,28 @@ def avatar_change():
     return redirect('user/{}'.format(current_user.username))
 
 
-# 修改密码
+# 修改密码，在此处发邮件到邮箱
 @login_required
-@base_bp.route('/password_change/<certification_id>')
-def password_change(certification_id):
-    mes = Message()
+@base_bp.route('/user/password_change')
+def password_change():
+
+    return
+
+
+# 修改密码,在此处修改、提交、验证，往数据库提交数据
+@login_required
+@base_bp.route('/user/password_change_validate/<user_id>/<certification_id>')
+def password_change_validate(user_id, certification_id):
+    msg = Message(subject="密码修改提示",
+                  recipients=User.query.filter_by(id=user_id).first().email,
+                  sender='821972394@qq.com',
+                  )
+    msg.html = "<h4>以您的这个邮箱注册的eztutor账号正在申请修改密码，您可以通过点击下面的链接进入密码修改页面</h4><br>" \
+               "<a href='/password_change_validate/{}<user_id>/{}<certification_id>'>" \
+               "106.14.144.221/password_change_validate/{}<user_id>/{}<certification_id></a>" \
+               "<br><h4>如果您并没有申请过修改密码，那么您的账号密码很有可能已经被他人窃取，请及时修改密码！</h4><br>"\
+        .format(user_id, certification_id, user_id, certification_id)
+    msg.send(msg)
     return
 
 
