@@ -8,7 +8,7 @@ python_bp = Blueprint('python_bp', __name__, url_prefix='/python')
 
 
 @python_bp.route('/')
-@python_bp.route('/1st')
+@python_bp.route('/1ch')
 def intro():
     a_id = 1
     article = Article.query.filter_by(id=a_id).first()
@@ -20,7 +20,7 @@ def intro():
                            user_comment=user_comment)
 
 
-@python_bp.route('/2nd')
+@python_bp.route('/2ch')
 def sec_chapter():
     a_id = 2
     article = Article.query.filter_by(id=a_id).first()

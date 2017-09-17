@@ -11,6 +11,7 @@ from threading import Thread
 from ..forms import UserRegisterForm, LoginForm, SuggestionForm, EditForm
 from functools import reduce
 from datetime import datetime
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
 # 创建蓝图
 base_bp = Blueprint('base_bp', __name__, url_prefix='')
@@ -32,6 +33,26 @@ def send_email(to, subject, template, **kwargs):
     thr = Thread(target=send_async_email, args=[app, msg])
     thr.start()
     return thr
+
+
+# 安全验证相关
+def generate_confirmation_token(user_id, email, expired=600):
+    s = Serializer(current_app.config['SECRET_KEY'], expired)
+    return s.dumps({'id': user_id, 'email': email})
+
+
+# 用id和email是否配对来检查, 返回[验证通过与否，验证的用户id]
+def confirm(token):
+    s = Serializer(current_app.config['SECRET_KEY'])
+    try:
+        data = s.loads(token)
+        user_id = data.get('id')
+        email = data.get('email')
+    except :
+        return [False, None]
+    if user_id != User.query.filter_by(email=email).first().id:
+        return [False, None]
+    return [True, user_id]
 
 
 # 加载已登录的用户
@@ -102,7 +123,7 @@ def register():
         db.session.commit()
 
         # 异步发送欢迎邮件
-        send_email(user.email, '欢迎注册eztutor', 'welcome_mail', user=user)
+        send_email(user.email, '欢迎注册eztutor', 'email/welcome_mail', user=user)
 
         return redirect(url_for('base_bp.login'))
     return render_template('register.html', form=form)
@@ -164,15 +185,18 @@ def user(username):
         if request.form.get('username'):
             current_user.user = request.form.get('username')
             change += 1
+
         if request.form.get('password'):
             current_user.password = request.form.get('password')
             change += 1
+
         if request.form.get('sign'):
             current_user.sign = request.form.get('sign')
             change += 1
         if change > 0:
             db.session.add(current_user)
             db.session.commit()
+            flash('更改成功！')  # 在前端用js添加提示
             return render_template('user_profile.html')
     return render_template('user_profile.html')
 
@@ -198,29 +222,38 @@ def avatar_change():
     return redirect('user/{}'.format(current_user.username))
 
 
-# 修改密码，在此处发邮件到邮箱
-@login_required
-@base_bp.route('/user/password_change')
-def password_change():
+# 忘记密码
+@base_bp.route('/user/forget_password', methods=['GET', 'POST'])
+def forget_password():
+    return render_template('forget_password.html')
 
-    return
+
+# 修改密码，在此处发邮件到邮箱，ajax处理请求
+@base_bp.route('/user/password_change', methods=['GET', 'POST'])
+def password_change():
+    email = request.form['email']
+    user = User.query.filter_by(email=email).first()
+    token = generate_confirmation_token(user.id, email)
+    send_email(user.email, 'eztutor账号安全提醒', 'email/warning', user=user, token=token)
+    issue = '一封确认密码修改的邮件已经发送到您的注册邮箱！'
+    return json.dumps({'msg': issue, 'status': 'block'})
 
 
 # 修改密码,在此处修改、提交、验证，往数据库提交数据
-@login_required
-@base_bp.route('/user/password_change_validate/<user_id>/<certification_id>')
-def password_change_validate(user_id, certification_id):
-    msg = Message(subject="密码修改提示",
-                  recipients=User.query.filter_by(id=user_id).first().email,
-                  sender='821972394@qq.com',
-                  )
-    msg.html = "<h4>以您的这个邮箱注册的eztutor账号正在申请修改密码，您可以通过点击下面的链接进入密码修改页面</h4><br>" \
-               "<a href='/password_change_validate/{}<user_id>/{}<certification_id>'>" \
-               "106.14.144.221/password_change_validate/{}<user_id>/{}<certification_id></a>" \
-               "<br><h4>如果您并没有申请过修改密码，那么您的账号密码很有可能已经被他人窃取，请及时修改密码！</h4><br>"\
-        .format(user_id, certification_id, user_id, certification_id)
-    msg.send(msg)
-    return
+@base_bp.route('/password_change_validate/<token>', methods=['GET', 'POST'])
+def password_change_validate(token):
+    if confirm(token)[0]:
+        if request.method == "POST":
+            user = User.query.filter_by(id=confirm(token)[1]).first()
+            user.password = request.form.get('password')
+            db.session.add(user)
+            db.session.commit()
+            flash('密码修改成功！')
+            return redirect(url_for('base_bp.login'))
+
+        return render_template('change_password.html', token=token)
+    else:
+        return 404
 
 
 @base_bp.route('/logout')

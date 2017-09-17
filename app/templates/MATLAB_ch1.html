@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block sub_title %}&nbsp;1 概述{% endblock %}
+{% block sub_title %}&nbsp;MATLAB教程{% endblock %}
 
 {% block morelink %}
 <link rel="stylesheet" href="../static/css/tutor.css">
@@ -19,7 +19,7 @@
                     <span class="icon icon-book"></span>&nbsp;目录
                 </li>
                 <li role="presentation" class="side-link active">
-                    <a href="{{ url_for('python_bp.intro') }}">{{ article.name }}</a>
+                    <a href="{{ url_for('matlab_bp.1ch') }}">{{ article.name }}</a>
                 </li>
                 <li role="presentation" class="side-link">
                     <a href="#">1 概述</a>
@@ -74,29 +74,29 @@
                     </h3>
                 </div>
 
-                {% if comment %}
+                {% if user_comment %}
                 <div class="comment-content-wrap panel-body">
                     <ul class="comment-content list-group">
-                        {% for com in comment %}
+                        {% for user_com in user_comment %}
                         <li class="comment list-group-item clearfix row">
                             <div class="comment-avatar col-md-2">
-                                <img id="test" class="comment-header-avatar img-responsive" src="{{ com.speaker_avatar }}">
+                                <img id="test" class="comment-header-avatar img-responsive" src="{{ user_com[0].avatar }}">
                             </div>
                             <div class="comment-header col-md-9">
 
                                 <div class="comment-header-title col-md-10">
-                                    <strong>{{ com.title }}</strong>
+                                    <strong>{{ user_com[1].title }}</strong>
                                 </div>
 
                                 <div class="comment-detail col-md-9">
-                                    {{ com.content }}
+                                    {{ user_com[1].content }}
                                 </div>
                             </div>
 
                             <div class="comment-from">
                                 <p class="pull-right">
-                                    by: {{ com.speaker }}&nbsp;&nbsp;&nbsp;
-                                    posted: {{ com.posted }}
+                                    by: {{ user_com[0].username }}&nbsp;&nbsp;&nbsp;
+                                    posted: {{ user_com[1].posted }}
                                 </p>
                             </div>
                         </li>
