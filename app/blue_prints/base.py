@@ -245,7 +245,8 @@ def password_change_validate(token):
     if confirm(token)[0]:
         if request.method == "POST":
             user = User.query.filter_by(id=confirm(token)[1]).first()
-            user.password = request.form.get('password')
+            if request.form.get('password'):
+                user.password = request.form.get('password')
             db.session.add(user)
             db.session.commit()
             flash('密码修改成功！')
