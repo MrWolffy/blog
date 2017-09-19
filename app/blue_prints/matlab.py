@@ -15,7 +15,7 @@ def intro():
     comment = Comment.query.filter_by(article_id=article.id).all()
     user = [User.query.filter_by(id=com.user_id).first() for com in comment]
     user_comment = zip(user, comment)
-    return render_template('MATLAB_ch1.html',
+    return render_template('matlab/MATLAB_ch1.html',
                            article=article,
                            user_comment=user_comment)
 

@@ -5,6 +5,7 @@ from app import app
 from ..models import *
 
 python_bp = Blueprint('python_bp', __name__, url_prefix='/python')
+series_name = 'Python 教程'
 
 
 @python_bp.route('/')
@@ -15,9 +16,9 @@ def intro():
     comment = Comment.query.filter_by(article_id=article.id).all()
     user = [User.query.filter_by(id=com.user_id).first() for com in comment]
     user_comment = zip(user, comment)
-    return render_template('python_intro.html',
+    return render_template('python/python_1ch.html',
                            article=article,
-                           user_comment=user_comment)
+                           user_comment=user_comment, )
 
 
 @python_bp.route('/2ch')
@@ -27,7 +28,7 @@ def sec_chapter():
     comment = Comment.query.filter_by(article_id=article.id).all()
     user = [User.query.filter_by(id=com.user_id).first() for com in comment]
     user_comment = zip(user, comment)
-    return render_template('python_intro.html',
+    return render_template('python/python_1ch.html',
                            article=article,
                            user_comment=user_comment)
 

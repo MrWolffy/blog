@@ -126,7 +126,7 @@ def register():
         send_email(user.email, '欢迎注册eztutor', 'email/welcome_mail', user=user)
 
         return redirect(url_for('base_bp.login'))
-    return render_template('register.html', form=form)
+    return render_template('user/register.html', form=form)
 
 
 # 使用ajax验证注册部分
@@ -169,7 +169,7 @@ def login():
             error = '账号或密码错误，无法登录！'
             alert_status = 'block'
     # 向前端传出一个permission_code，方便前端页面上验证权限
-    return render_template('login.html',
+    return render_template('user/login.html',
                            form=form,
                            permission_code=permission_code,
                            error=error,
@@ -197,8 +197,8 @@ def user(username):
             db.session.add(current_user)
             db.session.commit()
             flash('更改成功！')  # 在前端用js添加提示
-            return render_template('user_profile.html')
-    return render_template('user_profile.html')
+            return render_template('user/user_profile.html')
+    return render_template('user/user_profile.html')
 
 
 # 修改头像
@@ -225,7 +225,7 @@ def avatar_change():
 # 忘记密码
 @base_bp.route('/user/forget_password', methods=['GET', 'POST'])
 def forget_password():
-    return render_template('forget_password.html')
+    return render_template('user/forget_password.html')
 
 
 # 修改密码，在此处发邮件到邮箱，ajax处理请求
@@ -252,7 +252,7 @@ def password_change_validate(token):
             flash('密码修改成功！')
             return redirect(url_for('base_bp.login'))
 
-        return render_template('change_password.html', token=token)
+        return render_template('user/change_password.html', token=token)
     else:
         return 404
 

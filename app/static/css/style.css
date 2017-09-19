@@ -82,6 +82,11 @@ img { max-width: 100%; }
 
 /***** Top content *****/
 
+.alert{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
 .inner-bg {
     padding: 100px 0 170px 0;
 }

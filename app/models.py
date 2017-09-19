@@ -49,7 +49,7 @@ class User(db.Model):
     # interested = db.relationship('Article', backref=db.backref('interested_user'))
     wrote = db.relationship('Article', backref=db.backref('author'))
     last_seen = db.Column(db.DateTime, index=True)
-    avatar = db.Column(db.String(128), default='../static/images/avatar/default.png')
+    avatar = db.Column(db.String(128), default='/static/images/avatar/default.png')
 
     def __repr__(self):
         return '<User %s>' % self.username

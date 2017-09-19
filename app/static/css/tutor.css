@@ -18,7 +18,11 @@
     padding-bottom:0!important;
 }
 
-.side{border-right: solid #ccc 1px;}
+.side{
+    border: solid #ccc 1px;
+    background: #f5f5f5!important;
+    margin-top: 100px;
+}
 
 .main-text{
     font-size: 18px;
@@ -54,20 +58,17 @@
 
 /* 所有教程都可适用的部分 */
 .main-content{
-    background: #f3f3f3;
+    background: #fff;
 }
 .content-wrap{
     background: #ffffff;
     border-radius: 10px;
 
 }
-.side{
-    margin-top: 100px;
-    /*margin-right: 30px;*/
 
-}
 .content{
     margin-top: 100px;
+    padding-left: 50px;
 }
 .main-text{
     line-height: 36px;

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>简单教程{% block sub_title %}{% endblock %}</title>
+
+    <!-- 基本资源 -->
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/font-awesome.css">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/home.css">
+    <link rel="shortcut icon" href="../static/ico/book-logo-small.png" />
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .header{position: fixed; z-index: 5; left: 0; right: 0; top: 0;}
+    </style>
+
+    <!-- tutor部分-->
+    <link rel="stylesheet" href="../static/css/tutor.css">
+
+    <!-- UEditor部分 -->
+    <link rel="stylesheet" href="../static/umeditor/themes/default/css/umeditor.min.css">
+    <link rel="stylesheet" href="../static/umeditor/dialogs/emotion/emotion.css">
+    <script src="../static/umeditor/third-party/template.min.js"></script>
+    <script type="text/javascript" src="../static/umeditor/umeditor.config.js"></script>
+    <script type="text/javascript" src="../static/umeditor/umeditor.min.js"></script>
+    <script type="text/javascript" src="../static/umeditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" src="../static/umeditor/dialogs/emotion/emotion.js"></script>
+    <script type="text/javascript" src="../static/umeditor/dialogs/link/link.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            window.um = UM.getEditor('container', {
+                autoHeightEnabled: true,
+
+                autoFloatEnabled: true,
+
+                toolbar:['source | undo redo | bold italic underline strikethrough | superscript subscript | forecolor backcolor | removeformat |',
+                    'insertorderedlist insertunorderedlist | selectall cleardoc paragraph | fontfamily fontsize' ,
+                    '| justifyleft justifycenter justifyright justifyjustify |',
+                    'link unlink | emotion | horizontal print preview fullscreen', 'drafts']
+            });
+            $('#comment-edit-window').css('display', 'none');
+        });
+    </script>
+
+
+    <!--以上的是基本CSS和JS，以下的CSS和JS不同页面有所不同 -->
+    {% block morelink %}
+    {% endblock %}
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid header">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#my-navbar">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+                <a href="{{ url_for('base_bp.home') }}" class="navbar-brand header-link" id="home-link">
+                    <span class="icon icon-home" style="height: 30px;">&nbsp;<strong>所有内容</strong></span>
+                </a>
+
+        </div>
+        <div class="collapse navbar-collapse" id="my-navbar">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="{{ url_for('python_bp.intro') }} " class="header-link">
+                        Python
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="header-link">
+                        经济学
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="header-link">
+                        历史学
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="header-link">
+                        爬虫
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="header-link">
+                        网页制作
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="header-link">
+                        MATLAB
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if current_user.username %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle header-link" id="header-username2" data-toggle="dropdown" >
+                            <span class="icon icon-user-md" aria-hidden="true"></span>&nbsp; {{ current_user.username }}
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/user/{{ current_user.username }}">我的主页</a></li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="{{ url_for('base_bp.logout') }}">
+                                    <span class="icon icon-reply" aria-hidden="true"></span>&nbsp; 登出
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ url_for('base_bp.login') }}" class="header-link" id="sign-in">
+                            <span class="icon icon-signin" aria-hidden="true"></span>&nbsp; LOGIN
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--下面的是需要替换的具体内容部分 -->
+{% block content %}{% endblock %}
+
+<!-- 以上是需要替换的具体的内容部分 -->
+
+<div id="templatemo_footer" class="container_wapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p>Copyright © 2017 简单教程</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../static/js/tutor.js"></script>
+</html>
