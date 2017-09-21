@@ -3,11 +3,79 @@
 解决方案是切换发送端口，网易邮箱切换为994（使用SSL协议，需要在mail-config里面修改一下），即可。
 
 
-20179.19
+2017.9.19
 试着开发一下评论区的评论框，想把它改成能把原文本改成富文本，直接把带html标签的内容传进数据库。
 使用百度前端团队的UEditor.
 
-中午开始进行配置和调试，下午3.45左右调试结束。文档一下子变得很大很复杂，接下来需要重新组织一下模板，多用模板继承。
-有一个小细节： text-decoration: none; 会屏蔽掉富文本中的下划线和删除线。
+中午12点半左右开始进行配置和调试，下午3.45左右调试结束。文档一下子变得很大很复杂，接下来需要重新组织一下模板，多用模板继承。
+有两个个小细节：
+1  text-decoration: none; 会屏蔽掉富文本中的下划线和删除线；
+2  存进数据库的带html tag的字符取出时记得用jinjia2 “<args>|safe”开启转义，不然会被双引号引起来。
+
+
+2017.9.29
+今天偶然看到了jupyter notebook的使用，感觉放在服务器上远程连接很方便，以后也可以用来跑一些数据什么的，所以下载配置了一下，没想到坑还挺多。
+使用 jupyter notebook + nginx 的方案
+装好 jupyter notebook 之后，配置 jupyter notebook：
+
+打开 ipython
+配置密码
+>> from notebook.auth import passwd 
+>> passwd()
+
+记录好输出的密码的hash值
+
+配置 notebook config
+$ vim ~/.jupyter/jupyter-noteboook-config.py
+下面是配置
+# NotebookApp(JupyterApp) configuration
+c.NotebookApp.ip = '127.0.0.1'  # localhost
+c.NotebookApp.allow_origin = '*'
+c.NotebookApp.password = u'sha1:f57f9e2f4478:462d7641f71063500b11af81e3170c810f43d60b'
+c.NotebookApp.open_browser = False
+c.NotebookApp.port = 8888  # 后面nginx转入的端口
+c.NotebookApp.notebook_dir = '/root/notebook'
+
+配置nginx
+
+添加一个新的server
+server {
+        listen 1228; # 浏览器访问时的端口
+
+        server_name 106.14.144.221;
+
+        charset utf-8;
+
+        location / {
+            proxy_pass http://localhost:8888;  # 传给jupyter notebook 的端口
+            proxy_http_version 1.1;
+            proxy_set_header Origin "";  # 这是个坑，jupyter notebook使用的tonado框架从外部访问时header不能缺少 Origin 检验（不懂tonado，所以其实没理解这个地方）
+        }
+        location ~ /api/kernels/ {
+                proxy_pass            http://localhost:8888;
+                proxy_set_header      Origin "";
+        # websocket support
+                proxy_http_version    1.1;
+                proxy_set_header      Upgrade "websocket";
+                proxy_set_header      Connection "Upgrade";
+                proxy_read_timeout    86400;
+        }
+        location ~ /terminals/ {
+                proxy_pass            http://localhost:8888;
+                proxy_set_header      Origin "";
+                # websocket support
+                proxy_http_version    1.1;
+                proxy_set_header      Upgrade "websocket";
+                proxy_set_header      Connection "Upgrade";
+                proxy_read_timeout    86400;
+}
+}
+
+重新启动nginx，之后再启动jupyter notebook， 就可以愉快的在浏览器编辑代码了！！！
+（用supervisor启动jupyter notebook， 免得每次都手动启动，很麻烦）
+
+supervisor 启动 jupyter notebook:
+需要配置 supervisor 和 新建一个 start_notebook.sh
+详见 /etc/supervisor/notebook.conf    /root/.jupyter/start_notebook.sh
 
 

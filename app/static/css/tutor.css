@@ -56,6 +56,10 @@
     border-collapse: collapse;
 }
 
+ul>form{
+    display: none;
+}
+
 /* 所有教程都可适用的部分 */
 .main-content{
     background: #fff;
