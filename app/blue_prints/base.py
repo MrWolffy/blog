@@ -6,7 +6,9 @@ from flask_login import login_user, logout_user, current_user, login_required
 from flask_mail import Message
 from app import app, db, lm, mail
 from ..models import *
-import json, os
+import json
+import os
+import re
 from threading import Thread
 from ..forms import UserRegisterForm, LoginForm, SuggestionForm, EditForm
 from functools import reduce
@@ -274,7 +276,8 @@ def comment_get(article_id):
     if request.method == "POST":
         comment = Comment()
         comment.title = request.form.get('title')
-        comment.content = request.form.get('content')
+        ori_content = request.form.get('content')
+        comment.content = re.sub(r'<script>*</script>', '', ori_content)
         comment.article_id = article.id
         comment.user_id = user.id
         comment.speaker = user.username
@@ -288,6 +291,32 @@ def comment_get(article_id):
         return redirect(article.url)
     flash(status, info)
     return redirect(article.url)
+
+
+# 提交子评论
+@base_bp.route('/sub_comment_get', methods=['GET', 'POST'])
+def sub_comment_get():
+    user = current_user
+    info = '非常抱歉，回复失败，请稍后重试。'
+    status = 'warning'
+    if request.method == "POST":
+        sub_comment = SubComment()
+        # 后端传过来的是bytes，需要用decode先转为str
+        data = json.loads(request.get_data().decode('utf-8'))
+
+        sub_comment.main_comment_id = int(data['main_comment_id'])
+        ori_content = data['content']
+        sub_comment.content = re.sub(r'<script>*</script>', '', ori_content)
+        sub_comment.user_id = user.id
+        sub_comment.posted = datetime.utcnow()
+
+        db.session.add(sub_comment)
+        db.session.commit()
+        info = "感谢您的参与，回复成功！"
+        status = 'success'
+        return json.dumps({'info': info, 'status': status})
+    else:
+        return json.dumps({'info': info, 'status': status})
 
 
 app.register_blueprint(base_bp)

@@ -103,21 +103,21 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle header-link" id="header-username2" data-toggle="dropdown" >
-                            <span class="icon icon-user-md" aria-hidden="true"></span>&nbsp; amuro
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/user/{{ current_user.username }}">我的主页</a></li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="{{ url_for('base_bp.logout') }}">
-                                    <span class="icon icon-reply" aria-hidden="true"></span>&nbsp; 登出
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle header-link" id="header-username2" data-toggle="dropdown" >
+                        <span class="icon icon-user-md" aria-hidden="true"></span>&nbsp; amuro
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/user/{{ current_user.username }}">我的主页</a></li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{ url_for('base_bp.logout') }}">
+                                <span class="icon icon-reply" aria-hidden="true"></span>&nbsp; 登出
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
@@ -274,50 +274,120 @@
                     <div class="comment-content-wrap panel-body">
                         <ul class="comment-content list-group">
                             <!--评论编辑窗口-->
-                            <div class="modal-content" id="comment-edit-window">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" id="myModalLabel">编辑评论内容</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <form class="form-horizontal" method="post" action="/comment_get/1">
-                                        <div class="form-group">
-                                            <label for="tittle" class="col-sm-2 control-label">主题</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="comment-title" name="title" placeholder="请输入主题">
+                            <li>
+                                <div class="modal-content" id="comment-edit-window">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="myModalLabel">编辑评论内容</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal" method="post" action="#">
+                                            <div class="form-group">
+                                                <label for="tittle" class="col-sm-2 control-label">主题</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="comment-title" name="title" placeholder="请输入主题">
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="form-group">
-                                            <label for="content" class="col-sm-2 control-label">内容</label>
-                                            <div class="col-sm-10">
-                                                <script id="container" name="content" type="text/plain" style="width: 100%">  请在这里输入具体的内容</script>
+                                            <div class="form-group">
+                                                <label for="content" class="col-sm-2 control-label">内容</label>
+                                                <div class="col-sm-10">
+                                                    <script id="container" name="content" type="text/plain" style="width: 100%">  请在这里输入具体的内容</script>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <input type="submit" id="comment-submit" style="display: none">
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                    <button id="comment-submit-button" type="button" class="btn btn-primary">提交</button>
-                                </div>
-                            </div>
-                            <form class="reply-form-hide">
-                                <div class="form-group">
-                                    <div class="col-sm-10">
-                                        <script id="container-for-sub-comment" name="sub-comment" type="text/plain" style="width: 100%">  请在这里输入具体的内容</script>
+                                            <input type="submit" id="comment-submit" style="display: none">
+                                        </form>
                                     </div>
-                                    <div class="col-sm-1">
-                                        <button type="submit" class="btn btn-info btn-sm btn-submit">回复</button>
-                                    </div>
-                                    <div class="col-sm-1">
-                                        <a class="btn btn-default btn-sm btn-cancel">取消</a>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                        <button id="comment-submit-button" type="button" class="btn btn-primary">提交</button>
                                     </div>
                                 </div>
-                            </form>
+                            </li>
+                            <li>
+                                <form class="reply-form-hide">
+                                    <div class="form-group">
+                                        <div class="col-sm-10">
+                                            <script id="container-for-sub-comment" name="sub-comment" type="text/plain" style="width: 100%">  请在这里输入具体的内容</script>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <a  class="btn btn-info btn-sm btn-sub_com-submit">回复</a>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <a class="btn btn-default btn-sm btn-sub_com-cancel">取消</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </li>
                             <!--具体评论-->
+                            <!-- 第一条评论 -->
+                            <li class="comment list-group-item clearfix row" id="1">
 
+                                <div class="comment-avatar col-md-2">
+                                    <img id="test" class="comment-header-avatar img-responsive" src="../static/images/avatar/amuro_avatar%2010.png">
+                                </div>
+                                <div class="comment-header col-md-10">
+
+                                    <div class="comment-header-title col-md-10">
+                                        <strong>这是一条测试评论的标题</strong>
+                                    </div>
+                                    <div class="reply col-md-2">
+                                        <button class="btn btn-info btn-sm pull-right reply-btn" style="margin-top: 10px">回复</button>
+
+
+                                    </div>
+
+
+                                    <div class="comment-detail col-md-10">
+                                        这是评论的内容。这是评论的内容。<br>这是评论的内容。这是评论的内容。这是评论的内容。
+                                    </div>
+                                </div>
+
+
+                                <div class="comment-from col-md-offset-2 col-md-10">
+
+                                    <p class="pull-right">
+                                        by: amuro&nbsp;&nbsp;&nbsp;
+                                        posted: 2017.09.21
+                                    </p>
+                                </div>
+                                <!-- 子评论 -->
+                                <div class="sub-comment-block">
+                                    <ul class="comment-content list-group col-sm-offset-2 col-sm-10">
+                                    <!-- 第一条子评论 -->
+                                    <li class="comment list-group-item clearfix row ">
+
+                                        <div class="comment-avatar col-md-2">
+                                            <img id="test" class="comment-header-avatar img-responsive" src="../static/images/avatar/amuro_avatar%2010.png">
+                                        </div>
+                                        <div class="comment-header col-md-10">
+
+                                            <div class="reply col-md-2">
+                                                <!-- 父评论的id -->
+                                                <span class="parent-comment-id" style="display: none">1</span>
+                                            </div>
+
+
+                                            <div class="comment-detail col-md-12">
+                                                这是评论的内容。这是评论的内容。<br>这是评论的内容。这是评论的内容。这是评论的内容。
+                                            </div>
+                                        </div>
+
+                                        <div class="comment-from col-md-offset-2 col-md-10">
+
+                                            <p class="pull-right">
+                                                by: amuro&nbsp;&nbsp;&nbsp;
+                                                posted: 2017.09.21
+                                            </p>
+                                        </div>
+                                    </li>
+
+
+                                </ul>
+                                </div>
+                            </li>
+                            <!-- 第二条评论 -->
                             <li class="comment list-group-item clearfix row">
 
                                 <div class="comment-avatar col-md-2">
@@ -340,12 +410,44 @@
                                     </div>
                                 </div>
 
+
                                 <div class="comment-from col-md-offset-2 col-md-10">
 
                                     <p class="pull-right">
                                         by: amuro&nbsp;&nbsp;&nbsp;
                                         posted: 2017.09.21
                                     </p>
+                                </div>
+                                <!-- 子评论 -->
+                                <div class="sub-comment-block">
+                                    <ul class="comment-content list-group col-md-offset-2 col-md-10">
+                                    <li class="comment list-group-item clearfix row ">
+
+                                        <div class="comment-avatar col-md-2">
+                                            <img id="test" class="comment-header-avatar img-responsive" src="../static/images/avatar/amuro_avatar%2010.png">
+                                        </div>
+                                        <div class="comment-header col-md-10">
+
+                                            <div class="reply col-md-2">
+                                                <!-- 父评论的id -->
+                                                <span class="parent-comment-id" style="display: none">1</span>
+                                            </div>
+
+
+                                            <div class="comment-detail col-md-12">
+                                                这是评论的内容。这是评论的内容。<br>这是评论的内容。这是评论的内容。这是评论的内容。
+                                            </div>
+                                        </div>
+
+                                        <div class="comment-from col-md-offset-2 col-md-10">
+
+                                            <p class="pull-right">
+                                                by: amuro&nbsp;&nbsp;&nbsp;
+                                                posted: 2017.09.21
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
                                 </div>
                             </li>
 

@@ -130,7 +130,12 @@ class SubComment(db.Model):
     posted = db.Column(db.DateTime)
 
     def __repr__(self):
-        return '<SubComment from parent_comment{}, content={}.'.format(self.main_comment_id, self.content)
+        return '<SubComment {}, from parent_comment {}, user {} content={}.>'.format(
+            self.id,
+            self.main_comment_id,
+            self.user_id,
+            self.content
+        )
 
 
 class Suggestion(db.Model):

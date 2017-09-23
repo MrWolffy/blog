@@ -1,5 +1,9 @@
 *{margin: 0 auto;  list-style: none}
 
+body{
+    padding-top: 50px;
+}
+
 /* navbar部分 */
 .navbar{
     border: none;
