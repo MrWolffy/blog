@@ -73,7 +73,9 @@
                                     <strong>{{ user_com[1].title }}</strong>
                                 </div>
                                 <div class="reply col-md-2">
+                                    {% if current_user.username %}
                                     <button class="btn btn-info btn-sm pull-right reply-btn" style="margin-top: 10px">回复</button>
+                                    {% endif %}
                                     <!-- 父评论的id -->
                                     <span class="parent-comment-id" style="display: none">{{ user_com[1].id }}</span>
                                 </div>
@@ -130,7 +132,7 @@
                     {% endfor %}
                 </ul>
             </div>
-            
+
         {% else %}
             <div class="comment-content-wrap panel-body">
                 <h2>本文章还没有评论，快去成为第一个评论者吧！</h2>

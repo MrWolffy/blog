@@ -3,13 +3,13 @@
 }
 
 .side-link{
-    height: 40px;
-    line-height: 40px;
     font-size: 14px;
-    font-family: "微软雅黑 Light";
+    font-family: "黑体";
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
 }
 
-.nav-pills>li.active>a{ background: #35abd9!important; color: white}
+.nav-pills>li.active, .nav-pills>li.active>a{ background: #35abd9!important; color: white}
 
 #side-index{ color: gray}
 
@@ -24,9 +24,6 @@
     margin-top: 50px;
 }
 
-.main-text{
-    font-size: 18px;
-}
 
 .main-text-header{margin-bottom: 10px; border-bottom: solid #ccc 1px;}
 
@@ -68,6 +65,16 @@ ul>li>form{
     background: #ffffff;
     border-radius: 10px;
 
+}
+
+.main-text{
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.ordinary-li, p{
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .content{

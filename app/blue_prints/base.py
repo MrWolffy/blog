@@ -271,7 +271,7 @@ def logout():
 def comment_get(article_id):
     article = Article.query.filter_by(id=article_id).first()
     user = current_user
-    info = '提交失败，请稍后再试。'
+    info = '网络出了点问题，提交失败，请稍后再试。'
     status = 'warning'
     if request.method == "POST":
         comment = Comment()
@@ -285,7 +285,7 @@ def comment_get(article_id):
         comment.posted = datetime.utcnow()
         db.session.add(comment)
         db.session.commit()
-        info = "提交成功！"
+        info = "感谢您的参与，提交成功！"
         status = 'success'
         flash(status, info)
         return redirect(article.url)

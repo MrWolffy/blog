@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cmn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewpoint" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -14,7 +14,7 @@
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
-        .header{position: fixed; z-index: 5; left: 0; right: 0; top: 0;}
+
     </style>
 
     <!-- tutor部分-->
@@ -48,6 +48,14 @@
                     'link unlink | emotion | horizontal print preview fullscreen', 'drafts']
             });
             $('#comment-edit-window').css('display', 'none');
+
+            $(window).scroll(function(){
+                if ($(this).scrollTop() > 150){
+                    $('#back-to-top').fadeIn(100);
+                }else{
+                    $('#back-to-top').fadeOut(100);
+                }
+            })
         });
     </script>
 
@@ -58,7 +66,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default" role="navigation" id="nav-bar">
     <div class="container-fluid header">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -140,7 +148,9 @@
 {% block content %}{% endblock %}
 
 <!-- 以上是需要替换的具体的内容部分 -->
-
+<!-- 回到顶部 -->
+<div id="back-to-top" class="btn btn-lg btn-info">
+    <a href="#nav-bar" style="color: #fff"><span class="glyphicon glyphicon-open"></span></a></div>
 <div id="templatemo_footer" class="container_wapper">
     <div class="container">
         <div class="row">

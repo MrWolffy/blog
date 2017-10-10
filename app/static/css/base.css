@@ -1,12 +1,13 @@
 *{margin: 0 auto;  list-style: none}
 
 body{
-    padding-top: 50px;
+
 }
 
 /* navbar部分 */
 .navbar{
     border: none;
+    margin-bottom: 0 !important;
 }
 
 .navbar-brand{
@@ -70,3 +71,13 @@ body{
 
 a.more-link, #header-username{ color: #fff}
 
+
+#back-to-top{
+    position: fixed;
+    bottom: 100px;
+    right: 40px;
+    text-decoration: none;
+    display: none;
+    border-radius: 5px;
+    color: #fff !important;
+}
