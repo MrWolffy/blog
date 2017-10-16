@@ -77,4 +77,10 @@ def sec_chapter():
                            com_to_sub_dict=com_to_sub_dict
                            )
 
+
+@python_bp.route('/3ch')
+def thi_chapter():
+    return render_template('python/python_3ch.html')
+
+
 app.register_blueprint(python_bp)

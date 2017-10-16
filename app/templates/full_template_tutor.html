@@ -84,7 +84,7 @@
 
         </div>
         <div class="collapse navbar-collapse" id="my-navbar">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav nav-pills nav-stacked">
                 <li>
                     <a href="/python/1ch " class="header-link">
                         Python
@@ -133,65 +133,70 @@
 
     <div class="main-content">
         <div class="main-body container">
-            
-            <div class="col-md-2 side content-wrap">
-                <ul class="nav nav-pills nav-stacked">
-                    <li role="presentation" class="side-link" id="side-index">
-                        <span class="icon icon-book"></span>&nbsp;目录
-                    </li>
-                    <li role="presentation" class="side-link ">
-                        <a href="/python/1ch">第一章：Python前言</a>
-                    </li>
-                    <li role="presentation" class="side-link active">
-                        <a href="/python/2ch">第二章：搭建环境</a>
-                    </li>
-                    <li role="presentation" class="side-link">
-                        <a href="#">第三章：快速入门</a>
-                    </li>
-                    <li role="presentation" class="side-link">
-                        <a href="#">第四章：基本数据类型</a>
-                    </li>
-                    <li role="presentation" class="side-link">
-                        <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;第一章：基本控制流</a>
-                    </li>
-                    <li role="presentation" class="side-link">
-                        <a href="#">第二章：函数编程</a>
-                    </li>
-                    <li role="presentation" class="side-link">
-                        <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
-                    </li>
-                    <li role="presentation" class="side-link">
-                        <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
-                    </li>
-                    <li role="presentation" class="side-link">
-                        <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
-                    </li>
-                    <li role="presentation" class="side-link">
-                        <a href="#">第三章：函数编程</a>
-                    </li>
-                    <li role="presentation" class="side-link">
-                        <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
-                    </li>
-                    <li role="presentation" class="side-link">
-                        <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
-                    </li>
-                    <li role="presentation" class="side-link">
-                        <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
-                    </li>
-                    <li role="presentation" class="side-link">
-                        <a href="#">第四章：函数编程</a>
-                    </li>
-                    <li role="presentation" class="side-link">
-                        <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
-                    </li>
-                    <li role="presentation" class="side-link">
-                        <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
-                    </li>
-                    <li role="presentation" class="side-link">
-                        <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
-                    </li>
-                </ul>
-            </div>
+
+
+                <nav class="navbar side col-md-2">
+
+                        <ul class="nav nav-pills nav-stacked">
+                            <li role="presentation" class="side-link" id="side-index">
+                                &nbsp;&nbsp;<span class="icon icon-book"></span>&nbsp;目录
+                            </li>
+                            <li role="presentation" class="side-link active" style="background-color: #080808">
+                                <a href="{{ url_for('python_bp.intro') }}">第一章：入门</a>
+                            </li>
+                            <li role="presentation" class="side-link ">
+                                <a href="{{ url_for("python_bp.sec_chapter") }}">第二章：搭建环境</a>
+                            </li>
+                            <li role="presentation" class="side-link">
+                                <a href="#">第三章：快速入门</a>
+                            </li>
+                            <li role="presentation" class="side-link">
+                                <a href="#">第四章：基本数据类型</a>
+                            </li>
+                            <li role="presentation" class="side-link">
+                                <a href="#">&nbsp;&nbsp;第一章：基本控制流</a>
+                            </li>
+                            <li role="presentation" class="side-link">
+                                <a href="#">第二章：函数编程</a>
+                            </li>
+                            <li role="presentation" class="side-link">
+                                <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
+                            </li>
+                            <li role="presentation" class="side-link">
+                                <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
+                            </li>
+                            <li role="presentation" class="side-link">
+                                <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
+                            </li>
+                            <li role="presentation" class="side-link">
+                                <a href="#">第三章：函数编程</a>
+                            </li>
+                            <li role="presentation" class="side-link">
+                                <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
+                            </li>
+                            <li role="presentation" class="side-link">
+                                <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
+                            </li>
+                            <li role="presentation" class="side-link">
+                                <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
+                            </li>
+                            <li role="presentation" class="side-link">
+                                <a href="#">第四章：函数编程</a>
+                            </li>
+                            <li role="presentation" class="side-link">
+                                <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
+                            </li>
+                            <li role="presentation" class="side-link">
+                                <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
+                            </li>
+                            <li role="presentation" class="side-link">
+                                <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
+                            </li>
+                        </ul>
+
+                </nav>
+
+
             <div class="col-md-10 content content-wrap">
                 <div class="main-text-header">
                     <h2 class="display-2">安装开发环境&nbsp;&nbsp;&nbsp;<small class="text-muted">2017.10.01</small></h2>

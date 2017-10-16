@@ -1,0 +1,182 @@
+{% extends 'base_tutor.html' %}
+{% block sub_title %}python教程{% endblock %}
+
+
+{% block content %}
+<!-- 主内容部分 -->
+<div class="main-content">
+    <div class="main-body container">
+
+        <div class="col-md-2 side content-wrap">
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation" class="side-link" id="side-index">
+                    <span class="icon icon-book"></span>&nbsp;目录
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="{{ url_for('python_bp.intro') }}">第一章：Python 前言</a>
+                </li>
+                <li role="presentation" class="side-link ">
+                    <a href="{{ url_for("python_bp.sec_chapter") }}">第二章：搭建环境</a>
+                </li>
+                <li role="presentation" class="side-link active">
+                    <a href="#">第三章：快速入门</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">第四章：基本数据类型</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">&nbsp;&nbsp;第一章：基本控制流</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">第二章：函数编程</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">第三章：函数编程</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">第四章：函数编程</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-10 content content-wrap">
+            <div class="main-text-header">
+                <h2>快速入门&nbsp;&nbsp;&nbsp;<small>简单的原理和例子&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small><small>2017.10.13</small></h2>
+            </div>
+            <div class="main-text">
+
+                <div class="alert alert-info clearfix" role="alert">
+                    <p class="col-md-10 col-xs-10" style="line-height: 1.5; font-size: 20px; margin-top: 0"><span class="glyphicon glyphicon-paperclip"></span>&nbsp;程序是什么？</p>
+                    <button class="col-md-2 col-xs-2 btn btn-info pull-right" id="">Switch</button>
+                </div>
+
+                <section>
+                    <p><strong>如果抽象来看的话，一段程序往往是基于特定的算法，对数据进行处理和输出。</strong></p>
+
+                    <p>我们如果想要通过程序让计算机实现我们的特定的目的，首先需要让计算机知道需要对那些“对象”进行操作（当然，这些对象必须是已经存储在计算机可以获取的地方），接着是让计算机知道“进行怎样的操作”。</p>
+
+                    <p>这就涉及到两个方面的内容，一是“如何储存这些对象”， 二是“如何进行计算机可实现的操作”。</p>
+
+                    <p>前者，涉及到<mark><strong>数据结构</strong></mark>，后者，涉及到<mark><strong>算法</strong></mark>。</p>
+
+                    <p>我们先举计算方面的例子：</p>
+
+                    <p>如果我们想要计算 "1 + 1"：对于计算机来说，首先它可以把两个“1”作为<strong>“两个单独的可以运算的数字”</strong>储存起来，然后用“加法”这一算法来对这两个“1”进行处理，再将它算得的结果输出就行了。</p>
+                    <pre>In [1]: a = 1
+In [2]: b = 1
+In [3]: a + b
+Out[1]: 2
+
+# 这段简单的代码的背后是“数据结构”加上“算法”的逻辑。</pre>
+
+                    <p>再来一个稍复杂一点的例子吧。</p>
+
+                    <p>如果我们想要把 apple, alphabet, google, microsoft, tencent, alibaba 这些单词按照字母表先后顺序排序：
+                        对于计算机来说，首先它可以把这些单词作为<strong>“单词集（在我们的例子中，实际上是‘线性表’，数据结构章节会提到）”</strong>储存起来，然后再根据字母表顺序来对“单词集”中的单词进行排序。</p>
+
+                    <pre>In [1]: word_list = ['apple', 'alphabet', 'google', 'microsoft', 'tencent', 'alibaba']
+In [2]: sorted(word_list)
+Out[1]: ['alibaba', 'alphabet', 'apple', 'google', 'microsoft', 'tencent']</pre>
+
+                    <p><strong>粗略地理解，大家可以这样认为：<code>“程序 = 数据结构 + 算法”</code>。</strong></p>
+                </section>
+                <br>
+
+                <div class="alert alert-info clearfix" role="alert">
+                    <p class="col-md-10 col-xs-10" style="line-height: 1.5; font-size: 20px; margin-top: 0"><span class="glyphicon glyphicon-paperclip"></span>&nbsp;用变量来进行操作（变量名请好好取）</p>
+                    <button class="col-md-2 col-xs-2 btn btn-info pull-right" id="">Switch</button>
+                </div>
+
+                <section>
+                    <p>细心的你可能已经察觉到了，我们上面的两个简单的例子中，我们都使用了某一个字母或者单词来指代我们所想要操作的数据，即使是像 1 + 1 这样简单的计算。</p>
+
+                    <p>我们在这里所遵循的，是<strong>用变量来进行操作</strong>的原则与习惯。这里的变量和数学意义上的变量含义相近，我就不再具体赘述了。</p>
+
+                    <p>为什么这样做？一个是因为“复用性”，如果我们使用一个变量指代了某一些数据，下次我们想要对这些1数据进行提取或者其他的操作时，可以直接对“变量”进行操作，这将十分方便。
+                    其次在于保证逻辑的清晰、代码的可读性（一个清晰明了的变量名也是必要的），当我们编写长段代码甚至是一个包含很多文件的项目时，用变量来操作的方式，可以让我们更好地了解我们所写代码的逻辑，而不是一堆奇怪的数字或字符重复出现。</p>
+
+                    <pre>In [1]: 10000 * ( 1 + 0.05) ** 5  # 两个*号表示乘方运算
+Out[1]: 12762.815625000003
+                    </pre>
+                    <pre>In [1]: principal = 10000
+In [2]: r = 0.05
+In [3]: time = 5
+
+In [4]: print(principal * (1 + r) ** time)
+Out[1]: 12762.815625000003
+In [5]: r = 0.1
+In [6]: print(principal * (1 + r) ** time)
+Out[2]: 16105.100000000006
+
+# 同样计算10000元本金按5%的利率累计生息5年后的价值，这段代码就比上段逻辑更清晰。
+# 同样，简单的重新修改利率值(r)，便可重复用之前的数据重复计算。
+# 由于算法过于简单，这里的例子可能依然不够突出“用变量操作”的优势，但请大家体会一下二者的区别。</pre>
+
+                </section><br>
+
+                <section>
+                    <p>啰嗦了这么多，主要是为了给大家讲解一下有关编程的原理和习惯，算是一个对编程的快速的入门。</p>
+                    <p>下面，我们开始学习关于Python编程的一些基本知识，从基本的<strong>基础数据结构</strong>方面开始吧！</p>
+                </section>
+
+
+
+
+            </div>
+            <!-- 加载评论区 -->
+            {% include 'comment_block.html' %}
+        </div>
+
+    </div>
+</div>
+<script>
+    $(function(){
+        toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-bottom-center",
+        "preventDuplicates": false,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+        {% for message in get_flashed_messages(with_categories=True) %}
+            toastr.{{ message[1] }}('{{ message[0] }}', '提示信息');
+        {% endfor %}
+    })
+</script>
+{% endblock %}
+

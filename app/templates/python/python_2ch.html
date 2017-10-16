@@ -75,6 +75,8 @@
                 </div>
                 <div class="main-text clearfix">
                     <div class="col-md-12">
+                        <p class="text-muted"><strong>本教程中，所有的代码都推荐大家自己手动敲一遍，在敲代码的过程中，我们可能会敲错一些代码，但也会通过敲代码把知识掌握地更牢，也能养成一些习惯（<del>说不定还能练习英文打字</del>），这也是一个学习的过程。不推荐大家简单地进行复制粘贴。</strong></p>
+                        <br>
                         <section id="1st-part">
                             <h3>为更好的编程体验安装适合的开发环境</h3>
                             <p>对于想要使用一门编程语言进行开发的人来说，TA需要在自己的电脑上安装一些必要的“软件”。</p>
@@ -106,12 +108,15 @@
                             </p>
                             <p>这个Anaconda（巨蟒，比Python战斗力强？）也是一个很权威的版本，大家不必因为其“非直接官方”而担心其安全性。</p>
 
+                            <p>另外还有一款 <a href="https://www.jetbrains.com/pycharm/" target="_blank">非常好用的编辑器——Pycharm</a>（这个只是编辑器,
+                                需要搭配前两者才能使用），提供了“代码补全、库管理、项目管理、Debug”等强大的功能。其基本版是免费的，专业版是收费的（国内不少大学的学生可以申请学生免费）。</p>
+
                         </section><br>
 
 
                         <p>在这里我简单提供一下两个版本的安装过程的参考：</p>
                         <div class="alert alert-info clearfix" role="alert">
-                            <p class="col-md-10 col-xs-10" style="line-height: 1.5; font-size: 20px; margin-top: 0">“精简版”的安装和说明</p>
+                            <p class="col-md-10 col-xs-10" style="line-height: 1.5; font-size: 20px; margin-top: 0"><span class="glyphicon glyphicon-paperclip"></span>&nbsp;“精简版”的安装和说明</p>
                             <button class="col-md-2 col-xs-2 btn btn-info pull-right" id="3rd-part-trigger">Switch</button>
                         </div>
                         <section id="3rd-part" style="display:none;">
@@ -136,7 +141,7 @@
 
                         </section>
                         <div class="alert alert-info clearfix" role="alert">
-                            <p class="col-md-10 col-xs-10" style="line-height: 1.5; font-size: 20px; margin-top: 0">“Anaconda”的安装和说明</p>
+                            <p class="col-md-10 col-xs-10" style="line-height: 1.5; font-size: 20px; margin-top: 0"><span class="glyphicon glyphicon-paperclip"></span>&nbsp;“Anaconda”的安装和说明</p>
                             <button class="col-md-2 col-xs-2 btn btn-info pull-right" id="4th-part-trigger">Switch</button>
                         </div>
 
@@ -160,7 +165,14 @@
                             <br>
                         </section>
 
+                        <p>在安装好必要的环境之后，需要向大家做一点关于本教程内代码显示的提示。</p>
+                        <p>本教程内，所有在一行代码前有 <code>In [1]: </code>  <code>Out [1]: </code>或者<code><<<</code>  <code>>>></code> 的代码，都是在Console里执行的。</p>
+                        <p>所有不带这些字符的代码，都是在文件编辑器里写好后直接运行。</p>
+                        <p>代码部分的 <code>#</code> 符号表示注释。</p>
+
                         <p>在安装好了具体的环境之后，是不是迫不及待的想要进行一波“骚操作”了呢？那么开始我们的第一行代码，来一个惯例的“Hello world!"吧！</p>
+
+
                         <p>在Console里输入<code>print("Hello, world!")</code>就可以看到电脑经由你的代码打印出的第一条信息了！</p>
                         <pre>In [1]:print("hello world!")<br>hello world!</pre>
 
