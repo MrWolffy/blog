@@ -163,23 +163,224 @@
         </div>
         <div class="col-md-10 content content-wrap">
             <div class="main-text-header">
-                <h2>1 概述&nbsp;&nbsp;&nbsp;<small>2017.09.16</small></h2>
+                <h2>4.1 数值类型&nbsp;&nbsp;&nbsp;<small>2017.10.08</small></h2>
             </div>
             <div class="main-text">
-                <h3>MATLAB简介</h3>
-                <p>MATLAB是矩阵实验室（Matrix Laboratory）的简称，是一种用于算法开发、数据可视化、数据分析以及数值计算的高级技术计算语言和交互式环境。MATLAB的应用范围非常广，包括信号和图像处理、通信、控制系统设计、测试和测量、财务建模和分析，以及计算生物学等众多应用领域。附加的工具箱（单独提供的专用MATLAB函数集扩展了MATLAB的使用环境，以解决这些应用领域内特定类型的问题。</p>
+                <h3>数值类型数据的分类</h3>
+                <p>在MATLAB中，基本的数值类型有整数、单精度浮点数和双精度浮点数3类，如下表所示。</p>
+                <table>
+                	<tr>
+                		<th>数据类型</th>
+                		<th>数据格式</th>
+                	</tr>
+                	<tr>
+                		<td>整数</td>
+                		<td>
+                			int8, uint8,<br>
+                			int16, uint16,<br>
+                			int32, uint32,<br>
+                			int64, uint64
+                		</td>
+                	</tr>
+                	<tr>
+                		<td>单精度浮点数</td>
+                		<td>single</td>
+                	</tr>
+                	<tr>
+                		<td>双精度浮点数</td>
+                		<td>double</td>
+                	</tr>
+                </table>
+                <p>在未加说明与特殊定义时，MATLAB对所有数值按照双精度浮点数类型进行存储和操作。在需要时，可以使用整数类型或单精度浮点数类型进行运算和操作。整数类型和单精度浮点数类型的优点在于占用内存小，但首先要在能够满足精度要求的前提下。</p>
 
 
-                <h3>MATLAB的主要特点</h3>
-                <p>MATLAB以其良好的开放性和运行的可靠性，已经成为国际控制界公认的标准计算机软件，在国际上30多个数学类科技应用软件中，MATLAB在数值计算方面独占鳌头。</p>
-            	<p>（1）计算功能强大。</p>
-            	<p>（2）绘图非常方便。在Fortran和C语言中，绘图都很不容易，但在MATLAB里，数据的可视化非常简单。而且，MATLAB还具有较强的编辑图形界面的能力。</p>
-            	<p>（3）功能强大的工具箱是MATLAB的另一特色。MATLAB包含两个部分：核心部分和各种可选的工具箱。核心部分有数百个核心内部函数。除内部函数以外，MATLAB的所有核心文件和工具箱文件都是可读可写的源文件，用户可通过对源文件等修改以及加入自己的文件构成新的工具箱。</p>
-            	<p>（4）帮助功能完整。自带的帮助功能是非常强大的帮助手册。</p>
+                <h3>整数类型</h3>
+                <p>MATLAB提供了8种整数类型。这8种整数类型占用的位数不同，因此能够表示的数值范围也不同，如下表所示。</p>
+                <table>
+                	<tr>
+                		<th>整数类型</th>
+                		<th>数值范围</th>
+                		<th>转换函数</th>
+                	</tr>
+                	<tr>
+                		<td>有符号8位整数</td>
+                		<td>-2<sup>7</sup>～2<sup>7</sup>-1</td>
+                		<td>int8</td>
+                	</tr>
+                	<tr>
+                		<td>无符号8位整数</td>
+                		<td>0～2<sup>8</sup>-1</td>
+                		<td>uint8</td>
+                	</tr>
+                	<tr>
+                		<td>有符号16位整数</td>
+                		<td>-2<sup>15</sup>～2<sup>15</sup>-1</td>
+                		<td>int16</td>
+                	</tr>
+                	<tr>
+                		<td>无符号16位整数</td>
+                		<td>0～2<sup>16</sup>-1</td>
+                		<td>uint16</td>
+                	</tr>
+                	<tr>
+                		<td>有符号32位整数</td>
+                		<td>-2<sup>31</sup>～2<sup>31</sup>-1</td>
+                		<td>int32</td>
+                	</tr>
+                	<tr>
+                		<td>无符号32位整数</td>
+                		<td>0～2<sup>32</sup>-1</td>
+                		<td>uint32</td>
+                	</tr>
+                	<tr>
+                		<td>有符号64位整数</td>
+                		<td>-2<sup>63</sup>～2<sup>63</sup>-1</td>
+                		<td>int64</td>
+                	</tr>
+                	<tr>
+                		<td>无符号64位整数</td>
+                		<td>0～2<sup>64</sup>-1</td>
+                		<td>uint64</td>
+                	</tr>
+                </table>
+                <p>转换函数中，数字代表该类型所占用的位数，u代表unsigned（无符号）。使用转换函数，可以将浮点型数值转换为整数数值或在整数数值类型之间相互转换。在将浮点型数值转换为整数数值的过程中，MATLAB默认将待转换数值转换为与之最为接近的整数值，若小数部分位0.5，则转换后的结果为与该浮点数最接近的两个整数中绝对值较大的一个。在整数数值类型之间转换的过程中，待转换的数值不应超过待转换的整数类型能够表示的范围，否则就会出现错误，运算结果为该整数类型能够表示的最大值或最小值。</p>
+            	<p>在脚本编辑器或命令行输入：</p>
+            	<pre>int8(2.1)</pre>
+            	<p>输出结果为：</p>
+            	<pre>ans =<br>  int8<br>   2</pre>
+            	<p>在脚本编辑器或命令行输入：</p>
+            	<pre>int8(2.5)</pre>
+            	<p>输出结果为：</p>
+            	<pre>ans =<br>  int8<br>   3</pre>
+            	<p>在脚本编辑器或命令行输入：</p>
+            	<pre>int8(1024) <i>%int8类型能够表示的最大值为127</i></pre>
+            	<p>输出结果为：</p>
+            	<pre>ans =<br>  int8<br>   127</pre>
+            	<p>在脚本编辑器或命令行输入：</p>
+            	<pre>int16(1024) <i>%int16类型能够表示的最大值为32767</i></pre>
+            	<p>输出结果为：</p>
+            	<pre>ans =<br>  int16<br>   1024</pre>
+            	<p>MATLAB还包含了几类取整函数，也可以把浮点数转换成整数。这些取整函数及相应的转换方式如下表所示。</p>
+            	<table>
+            		<tr>
+            			<th>函数</th>
+            			<th>运算法则</th>
+            			<th>示例</th>
+            		</tr>
+            		<tr>
+            			<td>floor(x)</td>
+            			<td>向下取整</td>
+            			<td>
+            				floor(1.2)=1<br>
+            				floor(2.5)=2<br>
+            				floor(-2.5)=-3
+            			</td>
+            		</tr>
+            		<tr>
+            			<td>cell(x)</td>
+            			<td>向上取整</td>
+            			<td>
+            				ceil(1.2)=2<br>
+            				ceil(2.5)=3<br>
+            				ceil(-2.5)=-2
+            			</td>
+            		</tr>
+            		<tr>
+            			<td>round(x)</td>
+            			<td>
+            				取最接近的整数<br>
+            				如果小数部分是0.5，则向绝对值大的方向取整
+						</td>
+            			<td>
+            				round(1.2)=1<br>
+            				round(2.5)=3<br>
+            				round(-2.5)=-3
+            			</td>
+            		</tr>
+            		<tr>
+            			<td>fix(x)</td>
+            			<td>向0取整</td>
+            			<td>
+            				fix(1.2)=1<br>
+            				fix(2.5)=2<br>
+            				fix(-2.5)=-2
+            			</td>
+            		</tr>
+            	</table>
+            	
             	 
             	 
-            	<h3>关于本教程</h3>
-            	<p>本教程基于MATLAB 2016b for Mac编写，主要面向北京大学经济、金融相关专业的在校学生。本教程在现有其他MATLAB教程的基础上，删去了大量与经济、金融无关的内容，简化较难或不常用到的内容，以求降低难度、快速入门。<span style="color: red">本教程假设学习者已经具备最基本的编程知识</span>，如逻辑运算、三种程序基本结构等。</p>
+            	<h3>浮点数类型</h3>
+            	<p>MATLAB中提供了单精度浮点数类型和双精度浮点数类型。单精度浮点数能够表示的数值范围和数值的精度都比双精度浮点数小，更加具体的差别超出了本教程的难度范围，不做介绍。</p>
+            	<p>双精度浮点数参与运算时，返回值的类型依赖于参与运算的其他数据类型。参与运算的其他数据为逻辑型、字符型时，返回结果为双精度浮点型；参与运算的其他数据为整数型时，返回结果为相应的整数类型；参与运算的其他数据为单精度浮点型时，返回结果为相应的单精度浮点型。</p>
+            	<p>在MATLAB中，单精度浮点型不能与整数类型进行算术运算。</p>
+            	<p>在脚本编辑器或命令行输入：</p>
+            	<pre>a = uint32(120); b = single(22.809); c = 73.226;<br>ab = a * b <i>%整数与单精度浮点型进行运算</i></pre>
+            	<p>输出结果为：</p>
+            	<pre>错误使用  * <br>整数只能与相同类的整数或标量双精度值组合使用。</pre>
+            	<p>在脚本编辑器或命令行输入：</p>
+            	<pre>ac = a * c <i>%120*73.226=8787.12</i></pre>
+            	<p>输出结果为：</p>
+            	<pre>ac =<br>  uint32<br>   8787</pre>
+            	<p>在脚本编辑器或命令行输入：</p>
+            	<pre>bc = b * c</pre>
+            	<p>输出结果为：</p>
+            	<pre>bc =<br>  single<br>  1.6702e+03</pre>
+            	<p>在脚本编辑器或命令行输入：</p>
+            	<pre>str = 'hello'</pre>
+            	<p>输出结果为：</p>
+            	<pre>str =<br>hello</pre>
+            	<p>在脚本编辑器或命令行输入：</p>
+            	<pre>newstr = str - 44.3</pre>
+            	<p>输出结果为：</p>
+            	<pre>newstr =<br>   59.7000   56.7000   63.7000   63.7000   66.7000</pre>
+            	<p>在脚本编辑器或命令行输入：</p>
+            	<pre>whos</pre>
+            	<p>输出结果为：</p>
+            	<pre>  Name        Size            Bytes  Class     Attributes<br><br>  a           1x1                 4  uint32<br>  ac          1x1                 4  uint32<br>  b           1x1                 4  single<br>  bc          1x1                 4  single<br>  c           1x1                 8  double<br>  newstr      1x5                40  double<br>  str         1x5                10  char </pre>
+            	<p>在MATLAB中，whos函数可以查看工作区中变量的属性。如果不指明对象，则返回工作区中所有变量的属性，如果指明对象，则返回所指明对象的属性。如在脚本编辑器或命令行输入：</p>
+            	<pre>whos a ac</pre>
+            	<p>输出结果为：</p>
+            	<pre>  Name        Size            Bytes  Class     Attributes<br><br>  a           1x1                 4  uint32<br>  ac          1x1                 4  uint32</pre>
+            	
+            	
+            	<h3>复数</h3>
+            	<p>MATLAB中默认使用字符i或j作为虚部标志。创建复数时，可以直接按照复数形式输入或者使用complex函数。MATLAB中有关复数的相关函数如下表所示。</p>
+            	<table>
+            		<tr>
+            			<th>函数</th>
+            			<th>说明</th>
+            		</tr>
+            		<tr>
+            			<td>real(z)</td>
+            			<td>返回复数z的实部</td>
+            		</tr>
+            		<tr>
+            			<td>imag(z)</td>
+            			<td>返回复数z的虚部</td>
+            		</tr>
+            		<tr>
+            			<td>abs(z)</td>
+            			<td>返回复数z的模</td>
+            		</tr>
+            		<tr>
+            			<td>angle(z)</td>
+            			<td>返回复数z的辐角</td>
+            		</tr>
+            		<tr>
+            			<td>comj(z)</td>
+            			<td>返回复数z的共轭复数</td>
+            		</tr>
+            		<tr>
+            			<td>complex(a, b)</td>
+            			<td>以a为实部，b为虚部创建复数</td>
+            		</tr>
+            	</table>
+            	
+            	
+            	
+            	<h3>无穷量和非数值量</h3>
+            	<p>MATLAB中使用inf（Inf）和-inf（-Inf）分别代表正无穷量和负无穷量，nan（NaN）表示非数值量。关于无穷量和非数值量的讨论超出本教程的范围，因此只对二者做最基本的介绍。</p>
             
             
             
