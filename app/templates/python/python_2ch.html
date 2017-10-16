@@ -1,0 +1,211 @@
+{% extends 'base_tutor.html' %}
+{% block sub_title %}&nbsp;Python 教程{% endblock %}
+
+
+
+{% block content %}
+    <div class="main-content">
+        <div class="main-body container">
+            {% for message in get_flashed_messages(with_categories=True) %}
+                <div class="alert alert-{{ message[1] }} flash-message" style="display: block; margin-top: 100px;">
+                    <h2>{{ message[0] }}</h2>
+                </div>
+            {% endfor %}
+            <div class="col-md-2 side content-wrap">
+                <ul class="nav nav-pills nav-stacked">
+                    <li role="presentation" class="side-link" id="side-index">
+                        <span class="icon icon-book"></span>&nbsp;目录
+                    </li>
+                    <li role="presentation" class="side-link ">
+                        <a href="{{ url_for('python_bp.intro') }}">第一章：Python前言</a>
+                    </li>
+                    <li role="presentation" class="side-link active">
+                        <a href="{{ url_for("python_bp.sec_chapter") }}">第二章：{{ article.name }}</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">第三章：快速入门</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">第四章：基本数据类型</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;第一章：基本控制流</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">第二章：函数编程</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">第三章：函数编程</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">第四章：函数编程</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-10 content content-wrap">
+                <div class="main-text-header">
+                    <h2 class="display-2">安装开发环境&nbsp;&nbsp;&nbsp;<small class="text-muted">2017.10.01</small></h2>
+                </div>
+                <div class="main-text clearfix">
+                    <div class="col-md-12">
+                        <section id="1st-part">
+                            <h3>为更好的编程体验安装适合的开发环境</h3>
+                            <p>对于想要使用一门编程语言进行开发的人来说，TA需要在自己的电脑上安装一些必要的“软件”。</p>
+
+                            <p>首先是所使用的编程语言的运行环境，
+                                一般的编程语言需要依赖一定的“解释器”才能被计算机硬件所运行，并向用户展示结果；其次是写代码和调试代码的软件，代码本质上只是一
+                                般的文本，所以我们需要一个好的编辑器来“写”和“改”我们的代码。</p>
+
+                            <p>开发环境就是编程语言运行的环境和开发人员写代码的环境，也就是上文提到的两部分的软件。而将两者（运行和编写）结合在一起的软件，
+                                就是“集成开发环境”（Integrated Development Environment，简称IDE）。</p>
+
+                            <p>在正式的进行编程之前，首先教大家正确的安装好这样的环境。</p>
+                            <br>
+                        </section>
+
+                        <section id="2nd-part">
+                            <h3>安装Python解释器</h3>
+
+                            <p>目前已经发行的Python解释器的版本主要有2个，一是Python 2, 另一个是Python 3,。由于Python 3 加入了一些新特性，修改了
+                                部分语法，因此这两个版本的代码不可复用。现在越来越多的第三方包已经逐渐完善对3的支持，大量前沿的技术和教程也都使用新的版本，
+                                所以推荐大家使用Python 3。
+                            </p>
+
+                            <p>主流的安装方法有两种，一是从官方下载“精简版”，一个只提供了基本解释器和包（packages）的版本。想要精简的内容和自主管理第三方包的朋友可以下载安装这个版本。
+                            </p>
+
+                            <p><strong>推荐大家安装另一版“集成版——Anaconda”，在“精简版”的基础上附加了很多常用的第三方包（尤其是科学计算方面）。而且集成了一款非常好用的
+                                IDE——Spyder 和一款非常好用的交互运行环境——Ipython。</strong>
+                            </p>
+                            <p>这个Anaconda（巨蟒，比Python战斗力强？）也是一个很权威的版本，大家不必因为其“非直接官方”而担心其安全性。</p>
+
+                        </section><br>
+
+
+                        <p>在这里我简单提供一下两个版本的安装过程的参考：</p>
+                        <div class="alert alert-info clearfix" role="alert">
+                            <p class="col-md-10 col-xs-10" style="line-height: 1.5; font-size: 20px; margin-top: 0">“精简版”的安装和说明</p>
+                            <button class="col-md-2 col-xs-2 btn btn-info pull-right" id="3rd-part-trigger">Switch</button>
+                        </div>
+                        <section id="3rd-part" style="display:none;">
+                            <p> 从官网下载最新的Python3版本（请根据自己的操作系统选择对应的版本）链接在这里：
+                                <a href="https://www.python.org/downloads/" target="_blank">Python官网</a></p>
+                            <img class="img-responsive" src="../../static/images/python/2cp/python_download1.png"><br>
+
+                            <p>下载完毕后，打开安装文件，先勾选最下方的两个选项，尤其是“Add Python 3.6 to PATH”（这里把Python3添加到你的系统路径，
+                                后面很多操作会很方便）。然后点击中间的第一个选项“Install Now”，若弹出需要系统管理员权限，点确认就行。然后等着安装包自动安装完毕，就OK了。
+                            </p>
+                            <img class="img-responsive" src="../../static/images/python/2cp/python_download2.png"><br>
+
+
+                            <p>安装完毕后，电脑上会多出以下的几个图标：</p>
+                            <div class="clearfix">
+                                <img class="col-md-offset-4 col-md-2 img-responsive" src="../../static/images/python/2cp/python_idle.jpg" style="margin-bottom: 10px">
+                                <img class="col-md-2 img-responsive" src="../../static/images/python/2cp/python_.jpg" style="margin-bottom: 10px">
+                                <span class="com-sm-4"></span>
+                            </div>
+                            <p>第一个是交互环境(Console)和编辑器，大家可以启动这个程序，来输入代码运行，也可以用这个程序创建新的文件，在新文件里编写长段的代码。</p>
+                            <p>第二个是解释器，也是一个交互运行的环境。你写好的代码最终都是由这个程序来运行的。但是相较于第一个，一般会较少直接地使用这个程序。</p>
+
+                        </section>
+                        <div class="alert alert-info clearfix" role="alert">
+                            <p class="col-md-10 col-xs-10" style="line-height: 1.5; font-size: 20px; margin-top: 0">“Anaconda”的安装和说明</p>
+                            <button class="col-md-2 col-xs-2 btn btn-info pull-right" id="4th-part-trigger">Switch</button>
+                        </div>
+
+                        <section id="4th-part" style="display:none;">
+
+                            <p>从Anaconda官网下载对应你的操作系统的Python3的版本。链接在这里 <a href="https://www.anaconda.com/download/" target="_blank">Anaconda官网</a>。</p>
+
+                            <img class="img-responsive" src="../../static/images/python/2cp/Anaconda_download1.png">
+
+                            <p>按提示一路进行安装（默认选项就行），其中记得勾选上添加到系统路径的选项，避免以后的一些麻烦。</p>
+
+                            <img class="img-responsive" src="../../static/images/python/2cp/Anaconda_add_path.png">
+
+                            <p>安装完毕之后，重点为大家介绍一下Anaconda自带的，也是我们以后主要会用到的IDE：Spyder</p>
+                            <img class="img-responsive" src="../../static/images/python/2cp/Spyder.png">
+
+                            <p>启动这个程序之后，我们会看到这样一个界面：</p>
+                            <img class="img-responsive" src="../../static/images/python/2cp/Spyder_ui_ex.png">
+                            <p>不同区域的功能大致如图片所解释。如果需要修改IDE的字体、字体大小或者其他的设置，可以通过上方工具栏的 Tools/Preferences来自定义。
+                                这个IDE的其他使用技巧我们以后还会说道，现阶段大家只需要知道这些就行了。</p>
+                            <br>
+                        </section>
+
+                        <p>在安装好了具体的环境之后，是不是迫不及待的想要进行一波“骚操作”了呢？那么开始我们的第一行代码，来一个惯例的“Hello world!"吧！</p>
+                        <p>在Console里输入<code>print("Hello, world!")</code>就可以看到电脑经由你的代码打印出的第一条信息了！</p>
+                        <pre>In [1]:print("hello world!")<br>hello world!</pre>
+
+                        <p>在Console里输入 <code>import this</code> 试试~</p>
+                        <p>那么，最后以Tim Peters的The Zen of Python结束这一部分吧！</p>
+                        <pre>The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+                        </pre>
+
+                    </div>
+                </div>
+                <!-- 加载评论区 -->
+                {% include 'comment_block.html' %}
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            $('#3rd-part-trigger').click(function(){
+                $('#3rd-part').toggle(600);
+            });
+            $('#4th-part-trigger').click(function() {
+                $('#4th-part').toggle(600);
+            })
+        })
+    </script>
+{% endblock %}
+
+

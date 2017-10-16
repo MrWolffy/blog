@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>MATLAB教程</title>
+
+    <!-- 基本资源 -->
+    <link rel="stylesheet" href="../../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../../static/css/font-awesome.css">
+    <link rel="stylesheet" href="../../static/css/base.css">
+    <link rel="stylesheet" href="../../static/css/home.css">
+    <link rel="shortcut icon" href="../../static/ico/book-logo-small.png" />
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .header{position: fixed; z-index: 5; left: 0; right: 0; top: 0;}
+    </style>
+
+    <!-- tutor部分-->
+    <link rel="stylesheet" href="../../static/css/tutor.css">
+
+    <!-- UEditor部分 -->
+    <link rel="stylesheet" href="../../static/umeditor/themes/default/css/umeditor.min.css">
+    <link rel="stylesheet" href="../../static/umeditor/dialogs/emotion/emotion.css">
+    <script src="../../static/umeditor/third-party/template.min.js"></script>
+    <script type="text/javascript" src="../../static/umeditor/umeditor.config.js"></script>
+    <script type="text/javascript" src="../../static/umeditor/umeditor.min.js"></script>
+    <script type="text/javascript" src="../../static/umeditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" src="../../static/umeditor/dialogs/emotion/emotion.js"></script>
+    <script type="text/javascript" src="../../static/umeditor/dialogs/link/link.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            window.um = UM.getEditor('container', {
+                autoHeightEnabled: true,
+
+                autoFloatEnabled: true,
+
+                initialFrameHeight: 170,
+
+                toolbar:['source | undo redo | bold italic underline strikethrough | superscript subscript | forecolor backcolor | removeformat |',
+                    'insertorderedlist insertunorderedlist | selectall cleardoc paragraph | fontfamily fontsize' ,
+                    '| justifyleft justifycenter justifyright justifyjustify |',
+                    'link unlink | emotion | horizontal print preview fullscreen', 'drafts']
+            });
+            $('#comment-edit-window').css('display', 'none');
+        });
+    </script>
+
+
+    <!--以上的是基本CSS和JS，以下的CSS和JS不同页面有所不同 -->
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid header">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#my-navbar">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a href="{{ url_for('base_bp.home') }}" class="navbar-brand header-link" id="home-link">
+                <span class="icon icon-home" style="height: 30px;">&nbsp;<strong>所有内容</strong></span>
+            </a>
+
+        </div>
+        <div class="collapse navbar-collapse" id="my-navbar">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="{{ url_for('python_bp.intro') }} " class="header-link">
+                        Python
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="header-link">
+                        经济学
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="header-link">
+                        历史学
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="header-link">
+                        爬虫
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="header-link">
+                        网页制作
+                    </a>
+                </li>
+                <li>
+                    <a href="MATLAB_ch1.html" class="header-link">
+                        MATLAB
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle header-link" id="header-username2" data-toggle="dropdown" >
+                        <span class="icon icon-user-md" aria-hidden="true"></span>&nbsp; amuro
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/user/{{ current_user.username }}">我的主页</a></li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{ url_for('base_bp.logout') }}">
+                                <span class="icon icon-reply" aria-hidden="true"></span>&nbsp; 登出
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!--下面的是需要替换的具体内容部分 -->
+<div class="main-content">
+    <div class="main-body container">
+
+        <div class="col-md-2 side content-wrap">
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation" class="side-link" id="side-index">
+                    <span class="icon icon-book"></span>&nbsp;目录
+                </li>
+                <li role="presentation" class="side-link active">
+                    <a href="#">{{ article.name }}</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">这是目录</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">&nbsp;&nbsp;这是目录</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;这是目录</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;这是目录</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">这是目录</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">&nbsp;&nbsp;这是目录</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">&nbsp;&nbsp;这是目录</a>
+                </li>
+                <li role="presentation" class="side-link">
+                    <a href="#">&nbsp;&nbsp;这是目录</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-10 content content-wrap">
+            <div class="main-text-header">
+                <h2>2 开始&nbsp;&nbsp;&nbsp;<small>2017.10.08</small></h2>
+            </div>
+            <div class="main-text">
+                <h3>安装</h3>
+                <p>北大正版软件共享平台（software.pku.edu.cn）提供了MATLAB的下载地址，下载之后参照software上的使用帮助完成安装和激活。由于MATLAB文件较大，请确保计算机本地有足够大的磁盘空间。</p>
+
+
+                <h3>界面</h3>
+                <p>在MATLAB的主界面中，有三个选项卡和三个窗口。三个选项卡分别为主页、绘图、APP。其中，主页通常进行主要常用操作，绘图用于绘制各种二维、三维、四维统计图，APP中有多项扩展功能。三个窗口分别是当前文件夹、命令行窗口和工作区。其中，当前文件夹用于显示当前目录下的文件，命令行窗口用于编写命令和显示结果，工作区用来显示各种变量及其类型和值。由于作者习惯采用命令行窗口操作MATLAB，因此在接下来的教程中将不再介绍三个选项卡的操作。</p>
+            	<img src="../../static/images/MATLAB/ch2/pic1.png" width="100%" alt=""/>
+            	<p>命令行中的"&gt;&gt;"代表MATLAB准备就绪，可以输入命令。输入完毕之后，按Enter键，MATLAB将执行新输入的一条命令。</p>
+            	 
+            	 
+            	<h3>初试MATLAB</h3>
+            	<p>（1）在命令行中输入"x = 1 + 1"，按Enter键，可以在工作区看到新生成的变量x，其值为2，命令行返回：</p>
+            	<pre>x =<br>     2</pre>
+            	<p>（2）在命令行中输入"y = -pi"，按Enter键，可以在工作区看到新生成的变量y，其值为-3.1416，命令行返回：</p>
+            	<pre>y =<br>   -3.1416</pre>
+            	<p>（3）在命令行输入"z = x + y"，按Enter键，可以在工作区看到新生成的变量z，其值为-1.1416，命令行返回：</p>
+            	<pre>z =<br>   -1.1416</pre>
+            	<p>当命令后面有分号（半角符号）的时候，运行后命令行不会返回计算结果。如果没有分号，则运行后命令行返回计算结果。读者可以在上述三条测试指令后面加上分号再运行，比较命令后面有分号和没有分号的差异。</p>
+            	
+            	
+            	<h3>帮助系统</h3>
+            	<p>MATLAB中的函数一般都有使用帮助和函数功能说明，在MATLAB窗口中，可以通过一些命令来获取帮助信息，如help、lookfor、which、doc、get、type等。常用的命令是help，其调用方式为：</p>
+            	<pre>help 函数名称</pre>
+            	<p>如果要了解sin函数的使用方法，可以在命令行中输入"help sin"，得到结果为：</p>
+            	<pre> sin    Sine of argument in radians.<br>    sin(X) is the sine of the elements of X.<br>    See also asin, sind.<br>    sin 的参考页<br>    名为 sin 的其他函数</pre>
+            
+            
+            
+            </div>
+            <!-- 加载评论区 -->
+            <div class="comment-block">
+                <div class="panel panel-info">
+
+                    <div class="comment-title panel-heading">
+                        <h3>Comments
+                            <a id="comment-switch"><button class="btn btn-info">switch</button></a>
+                            <a id="comment-button" class="pull-right"><button class="btn btn-info">展示/隐藏评论编辑框</button></a>
+                        </h3>
+                    </div>
+
+
+                    <div class="comment-content-wrap panel-body">
+                        <ul class="comment-content list-group">
+                            <!--评论编辑窗口-->
+                            <li>
+                                <div class="modal-content" id="comment-edit-window">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="myModalLabel">编辑评论内容</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal" method="post" action="#">
+                                            <div class="form-group">
+                                                <label for="tittle" class="col-sm-2 control-label">主题</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="comment-title" name="title" placeholder="请输入主题">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="content" class="col-sm-2 control-label">内容</label>
+                                                <div class="col-sm-10">
+                                                    <script id="container" name="content" type="text/plain" style="width: 100%">  请在这里输入具体的内容</script>
+                                                </div>
+                                            </div>
+
+                                            <input type="submit" id="comment-submit" style="display: none">
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                        <button id="comment-submit-button" type="button" class="btn btn-primary">提交</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <form class="reply-form-hide">
+                                    <div class="form-group">
+                                        <div class="col-sm-10">
+                                            <script id="container-for-sub-comment" name="sub-comment" type="text/plain" style="width: 100%">  请在这里输入具体的内容</script>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <a  class="btn btn-info btn-sm btn-sub_com-submit">回复</a>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <a class="btn btn-default btn-sm btn-sub_com-cancel">取消</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </li>
+                            <!--具体评论-->
+                            <!-- 第一条评论 -->
+                            <li class="comment list-group-item clearfix row" id="1">
+
+                                <div class="comment-avatar col-md-2">
+                                    <img id="test" class="comment-header-avatar img-responsive" src="../../static/images/avatar/amuro_avatar%2010.png">
+                                </div>
+                                <div class="comment-header col-md-10">
+
+                                    <div class="comment-header-title col-md-10">
+                                        <strong>这是一条测试评论的标题</strong>
+                                    </div>
+                                    <div class="reply col-md-2">
+                                        <button class="btn btn-info btn-sm pull-right reply-btn" style="margin-top: 10px">回复</button>
+
+
+                                    </div>
+
+
+                                    <div class="comment-detail col-md-10">
+                                        这是评论的内容。这是评论的内容。<br>这是评论的内容。这是评论的内容。这是评论的内容。
+                                    </div>
+                                </div>
+
+
+                                <div class="comment-from col-md-offset-2 col-md-10">
+
+                                    <p class="pull-right">
+                                        by: amuro&nbsp;&nbsp;&nbsp;
+                                        posted: 2017.09.21
+                                    </p>
+                                </div>
+                                <!-- 子评论 -->
+                                <div class="sub-comment-block">
+                                    <ul class="comment-content list-group col-sm-offset-2 col-sm-10">
+                                    <!-- 第一条子评论 -->
+                                    <li class="comment list-group-item clearfix row ">
+
+                                        <div class="comment-avatar col-md-2">
+                                            <img id="test" class="comment-header-avatar img-responsive" src="../../static/images/avatar/amuro_avatar%2010.png">
+                                        </div>
+                                        <div class="comment-header col-md-10">
+
+                                            <div class="reply col-md-2">
+                                                <!-- 父评论的id -->
+                                                <span class="parent-comment-id" style="display: none">1</span>
+                                            </div>
+
+
+                                            <div class="comment-detail col-md-12">
+                                                这是评论的内容。这是评论的内容。<br>这是评论的内容。这是评论的内容。这是评论的内容。
+                                            </div>
+                                        </div>
+
+                                        <div class="comment-from col-md-offset-2 col-md-10">
+
+                                            <p class="pull-right">
+                                                by: amuro&nbsp;&nbsp;&nbsp;
+                                                posted: 2017.09.21
+                                            </p>
+                                        </div>
+                                    </li>
+
+
+                                </ul>
+                                </div>
+                            </li>
+                            <!-- 第二条评论 -->
+                            <li class="comment list-group-item clearfix row">
+
+                                <div class="comment-avatar col-md-2">
+                                    <img id="test" class="comment-header-avatar img-responsive" src="../../static/images/avatar/amuro_avatar%2010.png">
+                                </div>
+                                <div class="comment-header col-md-10">
+
+                                    <div class="comment-header-title col-md-10">
+                                        <strong>这是一条测试评论的标题</strong>
+                                    </div>
+                                    <div class="reply col-md-2">
+                                        <button class="btn btn-info btn-sm pull-right reply-btn" style="margin-top: 10px">回复</button>
+                                        <!-- 父评论的id -->
+                                        <span class="parent-comment-id" style="display: none">1</span>
+                                    </div>
+
+
+                                    <div class="comment-detail col-md-10">
+                                        这是评论的内容。这是评论的内容。<br>这是评论的内容。这是评论的内容。这是评论的内容。
+                                    </div>
+                                </div>
+
+
+                                <div class="comment-from col-md-offset-2 col-md-10">
+
+                                    <p class="pull-right">
+                                        by: amuro&nbsp;&nbsp;&nbsp;
+                                        posted: 2017.09.21
+                                    </p>
+                                </div>
+                                <!-- 子评论 -->
+                                <div class="sub-comment-block">
+                                    <ul class="comment-content list-group col-md-offset-2 col-md-10">
+                                    <li class="comment list-group-item clearfix row ">
+
+                                        <div class="comment-avatar col-md-2">
+                                            <img id="test" class="comment-header-avatar img-responsive" src="../../static/images/avatar/amuro_avatar%2010.png">
+                                        </div>
+                                        <div class="comment-header col-md-10">
+
+                                            <div class="reply col-md-2">
+                                                <!-- 父评论的id -->
+                                                <span class="parent-comment-id" style="display: none">1</span>
+                                            </div>
+
+
+                                            <div class="comment-detail col-md-12">
+                                                这是评论的内容。这是评论的内容。<br>这是评论的内容。这是评论的内容。这是评论的内容。
+                                            </div>
+                                        </div>
+
+                                        <div class="comment-from col-md-offset-2 col-md-10">
+
+                                            <p class="pull-right">
+                                                by: amuro&nbsp;&nbsp;&nbsp;
+                                                posted: 2017.09.21
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <script>
+                        $(function(){
+                            var width = $('div.comment-detail').width();
+                            $('.reply-btn').click(function(){
+                                $(this).fadeOut(600);
+                                $(this).parent().parent().next().prepend(
+                                    $('.reply-form-hide').fadeIn(600)
+                                );
+                            });
+                            $('.btn-cancel').click(function(){
+                                $(this).parent().parent().parent().fadeOut(600);
+                                $('.reply-btn').fadeIn(600);
+                            });
+                            window.um = UM.getEditor('container-for-sub-comment', {
+                                autoHeightEnabled: true,
+
+                                autoFloatEnabled: true,
+
+                                initialFrameWidth: width,
+
+                                initialFrameHeight: 170,
+
+                                toolbar:['source | undo redo | bold italic underline strikethrough | superscript subscript | forecolor backcolor | removeformat |',
+                                    'insertorderedlist insertunorderedlist | selectall cleardoc paragraph | fontfamily fontsize' ,
+                                    '| justifyleft justifycenter justifyright justifyjustify |',
+                                    'link unlink | emotion | horizontal print preview fullscreen', 'drafts']
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 以上是需要替换的具体的内容部分 -->
+
+<div id="templatemo_footer" class="container_wapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p>Copyright © 2017 简单教程</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../static/js/tutor.js"></script>
+</html>
