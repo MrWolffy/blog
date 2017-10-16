@@ -76,8 +76,14 @@
                 <span class="icon-bar"></span>
             </button>
 
+            <button type="button" class="btn btn-info" id="side-nav-trigger">
+                <span class="glyphicon glyphicon-book"></span>
+            </button>
+
                 <a href="{{ url_for('base_bp.home') }}" class="navbar-brand header-link" id="home-link">
+                    <p id="home-name">
                     <span class="icon icon-home" style="height: 30px;">&nbsp;<strong>所有内容</strong></span>
+                    </p>
                 </a>
 
         </div>
@@ -142,6 +148,7 @@
         </div>
     </div>
 </nav>
+<div id="top"></div>
 
 <!--下面的是需要替换的具体内容部分 -->
 {% block content %}{% endblock %}
@@ -149,7 +156,7 @@
 <!-- 以上是需要替换的具体的内容部分 -->
 <!-- 回到顶部 -->
 <div id="back-to-top" class="btn btn-lg btn-info">
-    <a href="#nav-bar" style="color: #fff"><span class="glyphicon glyphicon-open"></span></a></div>
+    <a href="#top" style="color: #fff"><span class="glyphicon glyphicon-open"></span></a></div>
 <div id="templatemo_footer" class="container_wapper">
     <div class="container">
         <div class="row">
