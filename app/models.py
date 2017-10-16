@@ -42,14 +42,15 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(32), unique=True, index=True)
     email = db.Column(db.String(64), unique=True, index=True)
-    sign = db.Column(db.String(255), index=True)
+    sign = db.Column(db.String(255), index=True, default='这个人比较懒，什么都没有留下。')
     password_hash = db.Column(db.String(220), index=True)
     role = db.relationship('Role', secondary=user_role_table, backref=db.backref('user_role', lazy='dynamic'))
     comment = db.relationship('Comment', backref=db.backref('provider'))
+    sub_comment = db.relationship('SubComment', backref=db.backref('sub_com_provider'))
     # interested = db.relationship('Article', backref=db.backref('interested_user'))
     wrote = db.relationship('Article', backref=db.backref('author'))
     last_seen = db.Column(db.DateTime, index=True)
-    avatar = db.Column(db.String(128), default='../static/images/avatar/default.png')
+    avatar = db.Column(db.String(128), default='/static/images/avatar/default.png')
 
     def __repr__(self):
         return '<User %s>' % self.username
@@ -109,6 +110,7 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     article_id = db.Column(db.Integer, db.ForeignKey('article.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    sub_comment = db.relationship('SubComment', backref='parent_comment')
     title = db.Column(db.String(255), index=True)
     content = db.Column(db.Text)
     speaker = db.Column(db.String(30), index=True)
@@ -117,6 +119,23 @@ class Comment(db.Model):
 
     def __repr__(self):
         return '<Comment {}>'.format(self.content)
+
+
+class SubComment(db.Model):
+    __tablename__ = "subcomment"
+    id = db.Column(db.Integer, primary_key=True)
+    main_comment_id = db.Column(db.Integer, db.ForeignKey('comment.id'))
+    content = db.Column(db.Text)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    posted = db.Column(db.DateTime)
+
+    def __repr__(self):
+        return '<SubComment {}, from parent_comment {}, user {} content={}.>'.format(
+            self.id,
+            self.main_comment_id,
+            self.user_id,
+            self.content
+        )
 
 
 class Suggestion(db.Model):

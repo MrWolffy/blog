@@ -18,15 +18,16 @@
 }
 */
 .user-info{
-    margin-top: 60px;
+    margin-top: 10px;
 }
 
 .shade{
     text-shadow: black 5px 3px 3px;
 }
 
-#user-name{
+#user-name, .signature{
     font: normal 32px/34px arial, "微软雅黑 Light";
+    color: #fff;
 }
 
 .user-article{

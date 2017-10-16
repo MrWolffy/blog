@@ -6,7 +6,7 @@ body {
     color: #888;
     line-height: 30px;
     text-align: center;
-	background: url('../images/backgrounds/1.jpg');
+	background: url('../images/backgrounds/blue.svg');
 }
 
 strong { font-weight: 500; }
@@ -81,6 +81,11 @@ img { max-width: 100%; }
 
 
 /***** Top content *****/
+
+.alert{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
 
 .inner-bg {
     padding: 100px 0 170px 0;
