@@ -34,6 +34,7 @@ def get_sub_dict(sub_comment_all, comment):
 @python_bp.route('/1ch')
 def intro():
     a_id = 1
+    chap_num = 1
     article = Article.query.filter_by(id=a_id).first()
     comment = Comment.query.filter_by(article_id=article.id).all()
     if not comment:
@@ -48,6 +49,7 @@ def intro():
         user = [User.query.filter_by(id=com.user_id).first() for com in comment]
         user_comment = zip(user, comment)
     return render_template('python/python_1ch.html',
+                           chap_num=chap_num+1,
                            article=article,
                            user_comment=user_comment,
                            com_to_sub_dict=com_to_sub_dict
@@ -57,6 +59,7 @@ def intro():
 @python_bp.route('/2ch')
 def sec_chapter():
     a_id = 2
+    chap_num = 2
     article = Article.query.filter_by(id=a_id).first()
     comment = Comment.query.filter_by(article_id=article.id).all()
     if not comment:
@@ -72,6 +75,7 @@ def sec_chapter():
         user_comment = zip(user, comment)
 
     return render_template('python/python_2ch.html',
+                           chap_num=chap_num+1,
                            article=article,
                            user_comment=user_comment,
                            com_to_sub_dict=com_to_sub_dict
@@ -80,7 +84,53 @@ def sec_chapter():
 
 @python_bp.route('/3ch')
 def thi_chapter():
-    return render_template('python/python_3ch.html')
+    a_id = 3
+    chap_num = 3
+    article = Article.query.filter_by(id=a_id).first()
+    comment = Comment.query.filter_by(article_id=article.id).all()
+    if not comment:
+        user_comment = None
+        com_to_sub_dict = None
+    else:
+        sub_comment_all = [SubComment.query.filter_by(main_comment_id=com.id).all() for com in comment]
+        # sub_comment_all is like [[<SubComment from parent_comment1, content=None.], []]
 
+        com_to_sub_dict = get_sub_dict(sub_comment_all, comment)
+
+        user = [User.query.filter_by(id=com.user_id).first() for com in comment]
+        user_comment = zip(user, comment)
+
+    return render_template('python/python_3ch.html',
+                           chap_num=chap_num+1,
+                           article=article,
+                           user_comment=user_comment,
+                           com_to_sub_dict=com_to_sub_dict
+                           )
+
+
+@python_bp.route('/4ch')
+def four_chapter():
+    a_id = 4
+    chap_num = 4
+    article = Article.query.filter_by(id=a_id).first()
+    comment = Comment.query.filter_by(article_id=article.id).all()
+    if not comment:
+        user_comment = None
+        com_to_sub_dict = None
+    else:
+        sub_comment_all = [SubComment.query.filter_by(main_comment_id=com.id).all() for com in comment]
+        # sub_comment_all is like [[<SubComment from parent_comment1, content=None.], []]
+
+        com_to_sub_dict = get_sub_dict(sub_comment_all, comment)
+
+        user = [User.query.filter_by(id=com.user_id).first() for com in comment]
+        user_comment = zip(user, comment)
+
+    return render_template('python/python_4ch.html',
+                           chap_num=chap_num+1,
+                           article=article,
+                           user_comment=user_comment,
+                           com_to_sub_dict=com_to_sub_dict
+                           )
 
 app.register_blueprint(python_bp)
