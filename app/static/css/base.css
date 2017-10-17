@@ -1,10 +1,12 @@
 *{margin: 0 auto;  list-style: none}
 
-body{
-
-}
 
 /* navbar部分 */
+
+#tiny-side-nav{
+    display: none;
+}
+
 .navbar{
     border: none;
     margin-bottom: 0 !important;
@@ -18,8 +20,17 @@ body{
     color: #fff !important
 }
 
+#home-name{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 .navbar-nav .open a:focus{
     background-color: #3f8fd2!important;
+}
+
+#side-nav-trigger{
+    display: none;
 }
 
 .header{ background: #35a9d8;}
@@ -80,4 +91,80 @@ a.more-link, #header-username{ color: #fff}
     display: none;
     border-radius: 5px;
     color: #fff !important;
+}
+
+/*小屏部分的CSS，主要是“回到顶部”和“侧边栏” */
+
+@media screen and (max-width: 500px){
+    #back-to-top{
+    position: fixed;
+    bottom: 10px;
+    right: 0;
+    text-decoration: none;
+    display: none;
+    border-radius: 5px;
+    color: #fff !important;
+    }
+
+    #nav-bar{
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1033;
+    }
+
+    .navbar-brand{
+        padding-top: 9px;
+        padding-bottom: 9px;
+        font-size: 30px;
+        line-height: 32px;
+        color: #fff !important;
+        width: 50%;
+        margin: 0;
+    }
+
+    #home-name{
+        width: 65%;
+        margin: 0 auto;
+    }
+
+    #side-nav-trigger{
+        display: block;
+        float: left;
+        margin-right: 60px;
+        margin-left: 15px;
+        background-color: #35a9d8;
+        border: 1px solid #ffffff;
+        margin-top: 8px;
+
+    }
+
+    #normal-side-nav{
+        display: none;
+    }
+
+    #tiny-side-nav {
+        width: 60%;
+        display: block;
+        position: fixed;
+        left: -60%;
+        top: 0;
+        background-color: #35a9d8;
+        color: #ffffff !important;
+        z-index: 1333;
+    }
+    li.tiny-side-link{
+        height: 35px;
+    }
+    li.tiny-side-link>a {
+        color: #ffffff;
+        line-height: 34px;
+        font-size: 16px;
+        text-decoration: none;
+    }
+
+    body{
+        padding-top: 50px;
+    }
 }

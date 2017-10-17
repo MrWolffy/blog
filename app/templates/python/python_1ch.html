@@ -3,140 +3,145 @@
 
 
 {% block content %}
-<!-- 主内容部分 -->
-<div class="main-content">
-    <div class="main-body container">
-
-        <div class="col-md-2 side content-wrap">
-            <ul class="nav nav-pills nav-stacked">
-                <li role="presentation" class="side-link" id="side-index">
-                    <span class="icon icon-book"></span>&nbsp;目录
-                </li>
-                <li role="presentation" class="side-link active">
-                    <a href="{{ url_for('python_bp.intro') }}">第一章：{{ article.name }}</a>
-                </li>
-                <li role="presentation" class="side-link ">
-                    <a href="{{ url_for("python_bp.sec_chapter") }}">第二章：搭建环境</a>
-                </li>
-                <li role="presentation" class="side-link">
-                    <a href="#">第三章：快速入门</a>
-                </li>
-                <li role="presentation" class="side-link">
-                    <a href="#">第四章：基本数据类型</a>
-                </li>
-                <li role="presentation" class="side-link">
-                    <a href="#">&nbsp;&nbsp;第一章：基本控制流</a>
-                </li>
-                <li role="presentation" class="side-link">
-                    <a href="#">第二章：函数编程</a>
-                </li>
-                <li role="presentation" class="side-link">
-                    <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
-                </li>
-                <li role="presentation" class="side-link">
-                    <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
-                </li>
-                <li role="presentation" class="side-link">
-                    <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
-                </li>
-                <li role="presentation" class="side-link">
-                    <a href="#">第三章：函数编程</a>
-                </li>
-                <li role="presentation" class="side-link">
-                    <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
-                </li>
-                <li role="presentation" class="side-link">
-                    <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
-                </li>
-                <li role="presentation" class="side-link">
-                    <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
-                </li>
-                <li role="presentation" class="side-link">
-                    <a href="#">第四章：函数编程</a>
-                </li>
-                <li role="presentation" class="side-link">
-                    <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
-                </li>
-                <li role="presentation" class="side-link">
-                    <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
-                </li>
-                <li role="presentation" class="side-link">
-                    <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
-                </li>
-            </ul>
-        </div>
-        <div class="col-md-10 content content-wrap">
-            <div class="main-text-header">
-                <h2>什么是Python&nbsp;&nbsp;&nbsp;<small>简单叙述&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small><small>2017.09.21</small></h2>
+    <!-- 主内容部分 -->
+    <div class="main-content">
+        <div class="main-body container">
+            <div class="row">
+            {% include "side_nav.html" %}
+            <div class="col-md-2 side content-wrap"  id="normal-side-nav">
+                <ul class="nav nav-pills nav-stacked">
+                    <li role="presentation" class="side-link" id="side-index">
+                        <span class="icon icon-book"></span>&nbsp;目录
+                    </li>
+                    <li role="presentation" class="side-link active">
+                        <a href="{{ url_for('python_bp.intro') }}">第一章：{{ article.name }}</a>
+                    </li>
+                    <li role="presentation" class="side-link ">
+                        <a href="{{ url_for("python_bp.sec_chapter") }}">第二章：搭建环境</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="{{ url_for("python_bp.thi_chapter") }}">第三章：快速入门</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">第四章：基本数据类型</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">&nbsp;&nbsp;第一章：基本控制流</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">第二章：函数编程</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">第三章：函数编程</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">第四章：函数编程</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
+                    </li>
+                    <li role="presentation" class="side-link">
+                        <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
+                    </li>
+                </ul>
             </div>
-            <div class="main-text">
+            <div class="col-md-10 content content-wrap">
+                <div class="row">
+                    <div class="main-text-header col-md-12">
+                        <h2>什么是Python&nbsp;&nbsp;&nbsp;<small>简单叙述&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small></h2>
+                    </div>
+                    <div class="main-text">
+                        <div class="col-md-12">
 
-                <p><strong>（本教程是完全面向新手的Python3教程，就算你之前完全没有接触过编程，也丝毫不必担心）</strong></p>
+                            <p><strong>（本教程是完全面向新手的Python3教程，就算你之前完全没有接触过编程，也丝毫不必担心）</strong></p>
 
 
-                <p>简单来说，Python是一种<mark><strong>编程语言</strong></mark>。更具体的，Python是一种<mark><strong>面向对象的解释性编程语言</strong></mark>，看到这，你可能会对“面向对象”和“解释性”感到疑惑，但不用担心，我们会在后面的教程中谈到，现阶段不用理解这两个概念。</p>
-                <p>作为编程语言，Python能做的事情很多，它可以被用于<strong>开发桌面软件、网站（本网站的后台使用的就是Python）、游戏，也可以用来收集网络数据、进行数据处理、进行机器学习</strong>等等。不过，如果想要实现同样的全部或部分功能，其他的编程语言，诸如性能极佳的C++, 功能全面的Java， 网站后台领域运用广泛的php，科学计算领域鼎鼎有名的matlab、R语言等也能胜任，那么我们为什么要选择学习python呢？</p>
-                <p>这是因为Python这门语言具有以下特点：</p>
-                <ol>
-                    <li class="ordinary-li">
-                        <strong>1.语言精炼，符号简洁。</strong>实现同样的功能，python所需要的代码量要比其他的绝大部分语言要少，同时，相比其他语言使用各种符号(如大括号，分号）来实现代码分块等功能，python使用了缩进的方式，所以python代码可阅读性会更强一些，这意味着我们在学习、阅读代码时的体验会更好。当然，在维持低代码量的同时，python也保持了很强的逻辑性。
-                    </li>
+                            <p>简单来说，Python是一种<mark><strong>编程语言</strong></mark>。更具体的，Python是一种<mark><strong>面向对象的解释性编程语言</strong></mark>，看到这，你可能会对“面向对象”和“解释性”感到疑惑，但不用担心，我们会在后面的教程中谈到，现阶段不用理解这两个概念。</p>
+                            <p>作为编程语言，Python能做的事情很多，它可以被用于<strong>开发桌面软件、网站（本网站的后台使用的就是Python）、游戏，也可以用来收集网络数据、进行数据处理、进行机器学习</strong>等等。不过，如果想要实现同样的全部或部分功能，其他的编程语言，诸如性能极佳的C++, 功能全面的Java， 网站后台领域运用广泛的php，科学计算领域鼎鼎有名的matlab、R语言等也能胜任，那么我们为什么要选择学习python呢？</p>
+                            <p>这是因为Python这门语言具有以下特点：</p>
+                            <ol>
+                                <li class="ordinary-li">
+                                    <strong>1.语言精炼，符号简洁。</strong>实现同样的功能，python所需要的代码量要比其他的绝大部分语言要少，同时，相比其他语言使用各种符号(如大括号，分号）来实现代码分块等功能，python使用了缩进的方式，所以python代码可阅读性会更强一些，这意味着我们在学习、阅读代码时的体验会更好。当然，在维持低代码量的同时，python也保持了很强的逻辑性。
+                                </li>
 
-                    <li class="ordinary-li">
-                        <strong>2.扩展丰富、强大。</strong>Python所为大家津津乐道的一个地方在于，它拥有众多业内高级工程师编写、维护的扩展（packages），或称之为“包”。这些包使得语言的使用者可以在不花费时间精力处理底层逻辑的情况下，通过简单地对扩展（package）的引用实现一些高级功能。
-                    </li>
-                    <li class="ordinary-li">
-                        <strong>3.业界运用广泛。</strong>Python这门语言现在已经得到了业内的广泛使用，许多大型网站，如Ins, Quora, 知乎，豆瓣等的后台就是由Python编写的，同时大量的公司内部的网络数据收集（主要是爬虫）使用的是python语言，在科学计算领域和近年兴起的机器学习领域（tensorflow），python也非常的活跃。 所以，你大可不必担心学习这门语言之后找不到实际的用途。
-                    </li>
-                    <li class="ordinary-li">
-                        <strong>4.可互动性。</strong>Python支持用命令行交互的方式运行代码，这意味着你可以很方便的在一个窗口内“一边看代码，一边看结果”。
-                    </li>
-                    <li class="ordinary-li">
-                        <strong>5.易学易上手。</strong>Python这门语言的语法十分的接近自然英语，也尽量减少了不必要的符号的出现；同时，由于大量“包”的存在，所以对初学者非常友好。
-                    </li>
-                </ol>
-                <p>
-                    当然，Python也并不是那么完美的，Python最受人诟病的一个特性在于，性能低。同样的一段程序，用C实现所需要的时间会远远小于python，所以在对计算性能要求较高的领域（如纯计算或者大型游戏），python的表现可能会不尽如人意。
-                </p>
-                <p>
-                    不过，对于现代计算机的一般业务来说，即使是Python这样性能不高的编程语言，大多数情况下，实际运行过程中所花费的时间对人来说也并不是那么不可忍受。尤其是涉及网络通信和一般的文件读写时，花在通信和读写上的时间远远大于程序内部运算的时间，比如，通信和读写花了1秒，运算上两种语言分别花了0.001S和0.01S。即使有十倍的性能差距，但对人来说这1.001s和1.01秒就没什么差距了。同时，实在需要高性能的纯计算部分，python也可以调用你写好的高性能代码（如C）来保持性能。
-                </p>
-                <p>
-                    看到这，你已经对这门语言有了一个初步的认识。不过，需要提醒大家的是，Python这门语言入门容易，但一些高级语言特性的掌握、一些复杂现实功能的实现仍然需要大家多费功夫。通常可以认为Python的学习曲线为先平后陡，所以大家也需要做好一定的心理准备。
-                </p>
-                <p>
-                    当然，我们这篇教程只是入门教程，所以就无良地略过一些复杂、难懂的地方了。那么，让我们开始吧！
-                </p>
+                                <li class="ordinary-li">
+                                    <strong>2.扩展丰富、强大。</strong>Python所为大家津津乐道的一个地方在于，它拥有众多业内高级工程师编写、维护的扩展（packages），或称之为“包”。这些包使得语言的使用者可以在不花费时间精力处理底层逻辑的情况下，通过简单地对扩展（package）的引用实现一些高级功能。
+                                </li>
+                                <li class="ordinary-li">
+                                    <strong>3.业界运用广泛。</strong>Python这门语言现在已经得到了业内的广泛使用，许多大型网站，如Ins, Quora, 知乎，豆瓣等的后台就是由Python编写的，同时大量的公司内部的网络数据收集（主要是爬虫）使用的是python语言，在科学计算领域和近年兴起的机器学习领域（tensorflow），python也非常的活跃。 所以，你大可不必担心学习这门语言之后找不到实际的用途。
+                                </li>
+                                <li class="ordinary-li">
+                                    <strong>4.可互动性。</strong>Python支持用命令行交互的方式运行代码，这意味着你可以很方便的在一个窗口内“一边看代码，一边看结果”。
+                                </li>
+                                <li class="ordinary-li">
+                                    <strong>5.易学易上手。</strong>Python这门语言的语法十分的接近自然英语，也尽量减少了不必要的符号的出现；同时，由于大量“包”的存在，所以对初学者非常友好。
+                                </li>
+                            </ol>
+                            <p>
+                                当然，Python也并不是那么完美的，Python最受人诟病的一个特性在于，性能低。同样的一段程序，用C实现所需要的时间会远远小于python，所以在对计算性能要求较高的领域（如纯计算或者大型游戏），python的表现可能会不尽如人意。
+                            </p>
+                            <p>
+                                不过，对于现代计算机的一般业务来说，即使是Python这样性能不高的编程语言，大多数情况下，实际运行过程中所花费的时间对人来说也并不是那么不可忍受。尤其是涉及网络通信和一般的文件读写时，花在通信和读写上的时间远远大于程序内部运算的时间，比如，通信和读写花了1秒，运算上两种语言分别花了0.001S和0.01S。即使有十倍的性能差距，但对人来说这1.001s和1.01秒就没什么差距了。同时，实在需要高性能的纯计算部分，python也可以调用你写好的高性能代码（如C）来保持性能。
+                            </p>
+                            <p>
+                                看到这，你已经对这门语言有了一个初步的认识。不过，需要提醒大家的是，Python这门语言入门容易，但一些高级语言特性的掌握、一些复杂现实功能的实现仍然需要大家多费功夫。通常可以认为Python的学习曲线为先平后陡，所以大家也需要做好一定的心理准备。
+                            </p>
+                            <p>
+                                当然，我们这篇教程只是入门教程，所以就无良地略过一些复杂、难懂的地方了。那么，让我们开始吧！
+                            </p>
+                        </div>
 
+                    </div>
+                </div>
+                <!-- 加载评论区 -->
+                {% include 'comment_block.html' %}
             </div>
-            <!-- 加载评论区 -->
-            {% include 'comment_block.html' %}
+            </div>
         </div>
-
     </div>
-</div>
-<script>
-    $(function(){
-        toastr.options = {
-        "closeButton": true,
-        "debug": false,
-        "newestOnTop": false,
-        "progressBar": false,
-        "positionClass": "toast-bottom-center",
-        "preventDuplicates": false,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "5000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-    };
-        {% for message in get_flashed_messages(with_categories=True) %}
-            toastr.{{ message[1] }}('{{ message[0] }}', '提示信息');
-        {% endfor %}
-    })
-</script>
+    <script>
+        $(function(){
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-bottom-center",
+                "preventDuplicates": false,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            {% for message in get_flashed_messages(with_categories=True) %}
+                toastr.{{ message[1] }}('{{ message[0] }}', '提示信息');
+            {% endfor %}
+        })
+    </script>
 {% endblock %}
 

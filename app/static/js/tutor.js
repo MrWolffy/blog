@@ -82,6 +82,20 @@ $(function (){
             toastr.success(data['info'], '提示信息');
             setTimeout("window.location.reload()", 5000);
         })
+    });
+
+    /** 小屏的侧边栏 */
+    $('#side-nav-trigger').click(function(){
+        $('#tiny-side-nav').animate({
+                left: "0"
+            }, 300
+        );
+    });
+    $('#fold-side-nav').click(function(){
+        $('#tiny-side-nav').animate({
+                left: "-60%"
+            }, 300
+        );
     })
 });
 
