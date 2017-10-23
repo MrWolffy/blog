@@ -1,0 +1,125 @@
+{% extends 'base_tutor.html' %}
+{% block sub_title %}python教程{% endblock %}
+
+
+{% block content %}
+    <!-- 主内容部分 -->
+    <div class="main-content">
+        <div class="main-body container">
+            <div class="row">
+            {% include "python/python_side_nav.html" %}
+
+            <div class="col-md-10 col-xs-12 content content-wrap">
+                <div class="row">
+                    <div class="main-text-header col-md-12">
+                        <h2>基本数据结构&nbsp;&nbsp;&nbsp;</h2>
+                    </div>
+                    <div class="main-text">
+                        <div class="col-md-12">
+                            <section id="open">
+                                <p>大家好！又见面了。</p>
+                                <p>上一节和大家简要地讨论了Python内部的基本数据类型，分别是 str, int, float, bool（忘记了的同学还是再复习一下前面的章节吧）。 之前也和大家说道过，一般的程序基本是由 “数据结构+算法”组成的，将不同类型的数据按照一定的顺序和方式组织起来，就构成了“数据结构”。</p>
+                                <P>这一章节，我们来简要了解一下Python内置的几种常见的数据结构。</P>
+                                <p><strong>大家如果使用Spyder进行接下来章节的学习，可以留意Spyder右上方的 <mark>Variable explorer</mark> 区域，里面会显示当前环境下产生的变量和结构化数据。</strong></p>
+                            </section>
+                            <section id="list">
+                                <h3>list(线性表、列表)</h3>
+                                <p>这一类的数据结构，是把复数的单个的数据类型按线性的顺序排列起来。具体的，大家可以想象一个有 1×n（n是长度）
+                                    个单元格的 excel表，这种 1×n 的结构，就是一个 list。list是一种动态的数据结构，
+                                    在创建之后我们可以随时对一个list整体或者其中的某些个体(几个格子里的数据）进行修改。</p>
+                                <p><small>如例子所示，一个list的每一个元素（excel表的每一个单元格）既可以是一个单独的单位数据，如一个int，或者一个str；也可以是一个新的结构化的数据，比如一个list。</small></p>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-hover table-bordered" style="border: none;">
+                                        <thead>
+                                        <tr class="warning">
+                                            <th>name</th>
+                                            <th>type</th>
+                                            <th>len</th>
+                                            <th colspan="7" style="text-align: center">value</th>
+
+                                        </tr>
+                                        <tr class="warning">
+                                            <th><strong>example_list</strong></th>
+                                            <th>list</th>
+                                            <th>7</th>
+                                            <th>0(int)</th>
+                                            <th>one(str)</th>
+                                            <th>True(boolean)</th>
+                                            <th>3.14(float)</th>
+                                            <th>this is an element(str)</th>
+                                            <th>another list(list)</th>
+                                            <th>[apple, orange, nut]</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <p>在Python中， list 由中括号“[ ]”表示，我们可以通过 [ ] 创建一个list， 也可以通过list()方法创建一个list。使用list()方法时，我们需要保证括号中的变量是一个“可迭代”的对象。关于“可迭代”，我们之后会提到，大家暂时只需将其理解为“有一定范围的，由很多个体组成的集合”的某种对象。</p>
+                                <p>我们来看几个例子。</p>
+                                <pre style="background-color:#2b2b2b;color:#c4d5e6;font-family:'Fira Code';font-size:13.5pt;">&gt;&gt;&gt; empty_list = <span style="color:#6617fb;">[ ]<br></span>&gt;&gt;&gt; <span style="color:#8888c6;">print</span><span style="color:#78dac3;">(</span>ex_empty<span style="color:#78dac3;">)<br></span><span style="color:#6617fb;">[]<br></span>&gt;&gt;&gt; <span style="color:#8888c6;">type</span><span style="color:#78dac3;">(</span>ex_empty<span style="color:#78dac3;">)<br></span>&lt;<span style="color:#cc7832;font-weight:bold;">class </span><span style="color:#008080;">'list'</span>&gt;<br>&gt;&gt;&gt; num_list = <span style="color:#6617fb;">[</span><span style="color:#6897bb;">1</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">2</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">3</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">4</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">5</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">6</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">7</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">8</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">9</span><span style="color:#6617fb;">]<br></span>&gt;&gt;&gt; <span style="color:#8888c6;">print</span><span style="color:#78dac3;">(</span>num_list<span style="color:#78dac3;">)<br></span><span style="color:#6617fb;">[</span><span style="color:#6897bb;">1</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">2</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">3</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">4</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">5</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">6</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">7</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">8</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">9</span><span style="color:#6617fb;">]<br></span>&gt;&gt;&gt; <span style="color:#8888c6;">len</span><span style="color:#78dac3;">(</span>num_list<span style="color:#78dac3;">)<br></span><span style="color:#6897bb;">9</span></pre>
+                                <pre style="background-color:#2b2b2b;color:#c4d5e6;font-family:'Fira Code';font-size:13.5pt;">&gt;&gt;&gt; new_num_list = <span style="color:#8888c6;">list</span><span style="color:#78dac3;">(</span><span style="color:#8888c6;">range</span><span style="color:#78dac3;">(</span><span style="color:#6897bb;">10</span><span style="color:#78dac3;">)) </span><span style="color:#808080;"># range(10)</span><span style="color:#808080;font-family:'宋体';">表示从</span><span style="color:#808080;">0</span><span style="color:#808080;font-family:'宋体';">开始的</span><span style="color:#808080;">10</span><span style="color:#808080;font-family:'宋体';">个整数<br></span>&gt;&gt;&gt; <span style="color:#8888c6;">type</span><span style="color:#78dac3;">(</span>new_num_list<span style="color:#78dac3;">)<br></span>&lt;<span style="color:#cc7832;font-weight:bold;">class </span><span style="color:#008080;">'list'</span>&gt;<br>&gt;&gt;&gt; <span style="color:#8888c6;">print</span><span style="color:#78dac3;">(</span>new_num_list<span style="color:#78dac3;">)<br></span><span style="color:#6617fb;">[</span><span style="color:#6897bb;">0</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">1</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">2</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">3</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">4</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">5</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">6</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">7</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">8</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">9</span><span style="color:#6617fb;">]<br></span>&gt;&gt;&gt; os_list = <span style="color:#6617fb;">[</span><span style="color:#008080;">'linux'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'mac os'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'windows'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'ios'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'android'</span><span style="color:#6617fb;">]<br></span>&gt;&gt;&gt; <span style="color:#8888c6;">print</span><span style="color:#78dac3;">(</span>os_list<span style="color:#78dac3;">)<br></span><span style="color:#6617fb;">[</span><span style="color:#008080;">'linux'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'mac os'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'windows'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'ios'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'android'</span><span style="color:#6617fb;">]</span></pre>
+
+                                <p>list的大致性质和创建如上，接下来给大家介绍一下常用的 list 的相关操作。<p>
+                                <p>如果我们已经创建好了一个 list， 现在想要修改这个list的内容，可以进行的操作有：获取元素、增加元素、删除元素、修改元素。</p>
+                                <h4><strong>获取元素</strong></h4>
+
+                                <p>如果我们需要索取一个list中的某些元素，这个时候，我们可以直接使用索引，或者使用“slice(切片)”。</p>
+                                <p>需要提前告知大家的是，大多数编程语言中，索引都是从“0”开始的，  [0]表示第一个元素， [1]表示第二个元素，以此类推。<p>
+                                <p>通过索引来访问list中的元素，就是直接在你的 list 变量名后加中括号 []。比如说， num_list[1]表示 num_list的第二个元素，值得注意的是, num_list[-1]表示List中的最后一个元素，[-2]表示倒数第二个元素，以此类推。</p>
+                                <p>而通过slice操作，我们可以获取list中的多个元素。<code>[int(a):int(b)]</code> 表示获取从 a-1（一般编程语言的计数从0开始） 到 b-1 位（不包括末尾数字）的对象。<code>[int(a): int(b): int(c)]</code>表示以c为“距离”，从a-1位取到b-1位。我们还是通过举一些例子来说明。</p>
+                                <pre style="background-color:#2b2b2b;color:#c4d5e6;font-family:'Fira Code';font-size:13.5pt;">&gt;&gt;&gt; new_num_list = <span style="color:#8888c6;">list</span><span style="color:#78dac3;">(</span><span style="color:#8888c6;">range</span><span style="color:#78dac3;">(</span><span style="color:#6897bb;">10</span><span style="color:#78dac3;">))<br></span>&gt;&gt;&gt; <span style="color:#8888c6;">print</span><span style="color:#78dac3;">(</span>new_num_list<span style="color:#78dac3;">)<br></span><span style="color:#6617fb;">[</span><span style="color:#6897bb;">0</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">1</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">2</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">3</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">4</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">5</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">6</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">7</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">8</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">9</span><span style="color:#6617fb;">]<br></span>&gt;&gt;&gt; new_num_list<span style="color:#6617fb;">[</span><span style="color:#6897bb;">0</span><span style="color:#6617fb;">]<br></span><span style="color:#6897bb;">0<br></span>&gt;&gt;&gt; new_num_list<span style="color:#6617fb;">[</span><span style="color:#6897bb;">3</span><span style="color:#6617fb;">]<br></span><span style="color:#6897bb;">3<br></span>&gt;&gt;&gt; new_num_list<span style="color:#6617fb;">[</span><span style="color:#6897bb;">1</span>:<span style="color:#6897bb;">4</span><span style="color:#6617fb;">]<br></span><span style="color:#6617fb;">[</span><span style="color:#6897bb;">1</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">2</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">3</span><span style="color:#6617fb;">]<br></span>&gt;&gt;&gt; new_num_list<span style="color:#6617fb;">[</span>-<span style="color:#6897bb;">5</span>:-<span style="color:#6897bb;">1</span><span style="color:#6617fb;">]<br></span><span style="color:#6617fb;">[</span><span style="color:#6897bb;">5</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">6</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">7</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">8</span><span style="color:#6617fb;">]<br></span>&gt;&gt;&gt; new_num_list<span style="color:#6617fb;">[</span><span style="color:#6897bb;">1</span>:<span style="color:#6897bb;">10</span>:<span style="color:#6897bb;">2</span><span style="color:#6617fb;">] # 每2位取一位<br></span><span style="color:#6617fb;">[</span><span style="color:#6897bb;">1</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">3</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">5</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">7</span><span style="color:#cc7832;">, </span><span style="color:#6897bb;">9</span><span style="color:#6617fb;">]</span></pre>
+                                <p>值得注意的是，这里的索引和slice()方法，对于任何一个str类都有同样的效果，大家可以自行实验一下。</p>
+
+                                <h4><strong>增加与删除元素</strong></h4>
+                                <p>增加元素常用的有<code>insert()</code>和<code>append()</code>方法。
+                                <code>insert(int(a), e)</code>方法可以可以在list的第a个位置插入一个元素e。
+                                <code>append(e)</code>方法可以在list的末尾添加一个元素e。由于Python的list是按线性表的机制实现的，所以<code>append()</code>的效率会更高一些。</p>
+
+                                <p>删除元素常用的是<code>pop()</code>方法。不往括号中填数字，表示删除list的末尾，往括号中填数字int(a)，表示删除第a位的元素。同样的，在末尾删除效率会更高。</p>
+                                <p>我们再看一些具体的例子。</p>
+                                <pre style="background-color:#2b2b2b;color:#c4d5e6;font-family:'Fira Code';font-size:13.5pt;">&gt;&gt;&gt; lan_list = <span style="color:#6617fb;">[</span><span style="color:#008080;">'c'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'c++'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'c#'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Java'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Ruby'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Python'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Javascript'</span><span style="color:#6617fb;">]<br></span>&gt;&gt;&gt; lan_list<span style="color:#86501f;">.</span>append<span style="color:#78dac3;">(</span><span style="color:#008080;">'php'</span><span style="color:#78dac3;">)<br></span>&gt;&gt;&gt; <span style="color:#8888c6;">print</span><span style="color:#78dac3;">(</span>lan_list<span style="color:#78dac3;">)<br></span><span style="color:#6617fb;">[</span><span style="color:#008080;">'c'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'c++'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'c#'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Java'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Ruby'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Python'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Javascript'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'php'</span><span style="color:#6617fb;">]<br></span>&gt;&gt;&gt; lan_list<span style="color:#86501f;">.</span>pop<span style="color:#78dac3;">()<br></span><span style="color:#008080;">'php'<br></span>&gt;&gt;&gt; <span style="color:#8888c6;">print</span><span style="color:#78dac3;">(</span>lan_list<span style="color:#78dac3;">)<br></span><span style="color:#6617fb;">[</span><span style="color:#008080;">'c'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'c++'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'c#'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Java'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Ruby'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Python'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Javascript'</span><span style="color:#6617fb;">]<br></span>&gt;&gt;&gt; lan_list<span style="color:#86501f;">.</span>insert<span style="color:#78dac3;">(</span><span style="color:#6897bb;">0</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Go language'</span><span style="color:#78dac3;">)<br></span>&gt;&gt;&gt; <span style="color:#8888c6;">print</span><span style="color:#78dac3;">(</span>lan_list<span style="color:#78dac3;">)<br></span><span style="color:#6617fb;">[</span><span style="color:#008080;">'Go language'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'c'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'c++'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'c#'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Java'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Ruby'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Python'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Javascript'</span><span style="color:#6617fb;">]<br></span>&gt;&gt;&gt; lan_list<span style="color:#86501f;">.</span>pop<span style="color:#78dac3;">(</span><span style="color:#6897bb;">2</span><span style="color:#78dac3;">)<br></span><span style="color:#008080;">'c++'<br></span>&gt;&gt;&gt; <span style="color:#8888c6;">print</span><span style="color:#78dac3;">(</span>lan_list<span style="color:#78dac3;">)<br></span><span style="color:#6617fb;">[</span><span style="color:#008080;">'Go language'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'c'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'c#'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Java'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Ruby'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Python'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Javascript'</span><span style="color:#6617fb;">]</span></pre>
+
+                                <h4><strong>修改元素</strong></h4>
+                                <p>List作为一种动态的数据结构，其每个元素是可以在创建完成之后任意修改的。修改方法一般是用<strong>索引和slice()</strong>取得元素，然后用<code>=</code>号直接赋值。</p>
+                                <pre style="background-color:#2b2b2b;color:#c4d5e6;font-family:'Fira Code';font-size:13.5pt;">&gt;&gt;&gt; lan_list = <span style="color:#6617fb;">[</span><span style="color:#008080;">'c'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'c++'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'c#'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Java'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Ruby'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Python'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Javascript'</span><span style="color:#6617fb;">]<br></span>&gt;&gt;&gt; lan_list<span style="color:#6617fb;">[</span><span style="color:#6897bb;">0</span><span style="color:#6617fb;">] </span>= <span style="color:#008080;">'C</span><span style="color:#008080;font-family:'宋体';">是一门运行速度很快的语言。</span><span style="color:#008080;">'<br></span>&gt;&gt;&gt; <span style="color:#8888c6;">print</span><span style="color:#78dac3;">(</span>lan_list<span style="color:#78dac3;">)<br></span><span style="color:#6617fb;">[</span><span style="color:#008080;">'C</span><span style="color:#008080;font-family:'宋体';">是一门运行速度很快的语言。</span><span style="color:#008080;">'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'c++'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'c#'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Java'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Ruby'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Python'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Javascript'</span><span style="color:#6617fb;">]<br></span>&gt;&gt;&gt; lan_list<span style="color:#6617fb;">[</span><span style="color:#6897bb;">1</span>:<span style="color:#6897bb;">3</span><span style="color:#6617fb;">] </span>= <span style="color:#6617fb;">[</span><span style="color:#008080;">'C++</span><span style="color:#008080;font-family:'宋体';">在</span><span style="color:#008080;">C</span><span style="color:#008080;font-family:'宋体';">的基础上增加了面向对象的特性</span><span style="color:#008080;">'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'C#</span><span style="color:#008080;font-family:'宋体';">在游戏开发领域（</span><span style="color:#008080;">Unity</span><span style="color:#008080;font-family:'宋体';">引擎）方面运用广泛</span><span style="color:#008080;">'</span><span style="color:#6617fb;">]<br></span>&gt;&gt;&gt; <span style="color:#8888c6;">print</span><span style="color:#78dac3;">(</span>lan_list<span style="color:#78dac3;">)<br></span><span style="color:#6617fb;">[</span><span style="color:#008080;">'C</span><span style="color:#008080;font-family:'宋体';">是一门运行速度很快的语言。</span><span style="color:#008080;">'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'C++</span><span style="color:#008080;font-family:'宋体';">在</span><span style="color:#008080;">C</span><span style="color:#008080;font-family:'宋体';">的基础上增加了面向对象的特性</span><span style="color:#008080;">'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'C#</span><span style="color:#008080;font-family:'宋体';">在游戏开发领域（</span><span style="color:#008080;">Unity</span><span style="color:#008080;font-family:'宋体';">引擎）方面运用广泛</span><span style="color:#008080;">'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Java'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Ruby'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Python'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'Javascript'</span><span style="color:#6617fb;">]<br></span></pre>
+
+                            </section>
+
+                            <section>
+                                <h3>Tuple</h3>
+                            </section>
+
+                        </div>
+
+                    </div>
+                </div>
+                <!-- 加载评论区 -->
+                {% include 'comment_block.html' %}
+            </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-bottom-center",
+                "preventDuplicates": false,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            {% for message in get_flashed_messages(with_categories=True) %}
+                toastr.{{ message[1] }}('{{ message[0] }}', '提示信息');
+            {% endfor %}
+        })
+    </script>
+{% endblock %}
+

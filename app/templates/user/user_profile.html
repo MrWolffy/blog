@@ -3,15 +3,6 @@
 {% block morelink %}
     <link rel="stylesheet" href="../../static/css/user_profile.css">
 
-    <style>
-        .main-content{
-            margin-top: 50px;
-        }
-        #change-avatar-input{
-            display: none;
-        }
-    </style>
-
 {% endblock %}
 
 {% block content %}
@@ -52,35 +43,43 @@
                 </ul>
 
                 <div id="interested-article">
-                    <div class="clearfix article">
-                        <div class="col-sm-4 event_animate_left">
-                            <img src="../../static/images/cover/python_cover.png" alt="Blog Post 1" class="img-responsive" />
-                        </div>
-                        <div class="col-sm-8 blog_text event_animate_right">
-                            <h1>Python 入门向教程</h1>
-                            <p>
-                                <span class="glyphicon glyphicon-user"></span> posted by <a href="#">黎坚</a>  &nbsp;&nbsp;
-                                <span class="glyphicon glyphicon-calendar"></span> 5<sup>th</sup> September 2084 &nbsp;&nbsp;
-                                <span class="glyphicon glyphicon-bookmark"></span> <a href="#">编程</a>, <a href="#">Python</a>, <a href="#">入门</a>
-                            </p>
-                            <p>Architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm amet aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </div>
-                    </div>
-
-                    <div class="clearfix article">
-                        <div class="col-sm-4 event_animate_left">
-                            <img src="../../static/images/cover/web-front.png" alt="Blog Post 2" class="img-responsive" />
-                        </div>
-                        <div class="col-sm-8 blog_text event_animate_right">
-                            <h1>网页制作简要教程</h1>
-                            <p>
-                                <span class="glyphicon glyphicon-user"></span> posted by <a href="#">黎坚</a> &nbsp;&nbsp;
-                                <span class="glyphicon glyphicon-calendar"></span> 12<sup>th</sup> July 2084 &nbsp;&nbsp;
-                                <span class="glyphicon glyphicon-bookmark"></span> <a href="#">编程</a>, <a href="#">HTML</a><a href="#">CSS</a><a href="#">Javascript</a>
-                            </p>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque lorem ipsum dolor Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm amet architecto beatae vitae dicta sunt explicabo. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
+                    <div class="clearfix article"></div>
+                <div class="col-sm-4 event_animate_left">
+                    <a href="{{ url_for('python_bp.intro') }}" style="text-decoration: none">
+                    <img src="../../static/images/cover/python_cover.png" alt="Blog Post 1" class="img-responsive" />
+                    </a>
+                </div>
+                <div class="col-sm-8 blog_text event_animate_right">
+                    <a href="{{ url_for('python_bp.intro') }}" style="text-decoration: none"><h1>Python 入门向教程</h1></a>
+                    <p>
+                        <span class="glyphicon glyphicon-user"></span> posted on  &nbsp;&nbsp;
+                        <span class="glyphicon glyphicon-calendar"></span> 5<sup>th</sup> September 2017 &nbsp;&nbsp;
+                        <span class="glyphicon glyphicon-bookmark"></span> <a href="#">编程</a>, <a href="#">Python</a>, <a href="#">入门</a>
+                    </p>
+                    <p>（本教程是完全面向新手的Python3教程，就算你之前完全没有接触过编程，也丝毫不必担心）<br>
+                        python是一种面向对象的<strong>解释性编程语言</strong>。<br>
+                        作为编程语言，python能做的事情很多，用于开发桌面软件、网站（本网站的后台使用的就是python）、游戏，也可以用来收集网络数据、进行数据处理等等。<br>
+                        Python具有很多的优势：<strong>语言精炼，符号简洁；扩展丰富、强大；业界广泛的运用；命令行带来的互动性；易学易上手……</strong>这些优势使得Python成为了近些年“最流行”的编程语言。<br>
+                        如果你对这门语言产生了一丝兴趣，并且想了解一些关于编程的基本知识，欢迎你学习这篇教程！
+                    </p>
+                </div>
+                <div class="clearfix article"></div>
+                <div class="col-sm-4 event_animate_left">
+                    <a href="{{ url_for('matlab_bp.intro') }}" style="text-decoration: none">
+                    <img src="../../static/images/cover/MATLAB-Logo.png" alt="Blog Post 2" class="img-responsive" />
+                    </a>
+                </div>
+                <div class="col-sm-8 blog_text event_animate_right">
+                    <a href="{{ url_for('matlab_bp.intro') }}" style="text-decoration: none"><h1>Matlab简要教程</h1></a>
+                    <p>
+                        <span class="glyphicon glyphicon-user"></span> posted on &nbsp;&nbsp;
+                        <span class="glyphicon glyphicon-calendar"></span> 12<sup>th</sup> October 2017 &nbsp;&nbsp;
+                        <span class="glyphicon glyphicon-bookmark"></span> <a href="#">编程</a>, <a href="#">Matlab</a>
+                    </p>
+                    <p>MATLAB是矩阵实验室（Matrix Laboratory）的简称，是一种用于算法开发、数据可视化、数据分析以及数值计算的高级技术计算语言和交互式环境。MATLAB的应用范围非常广，包括信号和图像处理、通信、控制系统设计、测试和测量、财务建模和分析，以及计算生物学等众多应用领域。附加的工具箱（单独提供的专用MATLAB函数集扩展了MATLAB的使用环境，以解决这些应用领域内特定类型的问题。
+                         MATLAB以其良好的开放性和运行的可靠性，已经成为国际控制界公认的标准计算机软件，在国际上30多个数学类科技应用软件中，MATLAB在数值计算方面独占鳌头。
+                    本教程基于MATLAB 2016b for Mac编写，主要面向北京大学经济、金融相关专业的在校学生。本教程在现有其他MATLAB教程的基础上，删去了大量与经济、金融无关的内容，简化较难或不常用到的内容，以求降低难度、快速入门。</p>
+                </div>
                 </div>
 
                 <div id="wrote-article" style="display: none">

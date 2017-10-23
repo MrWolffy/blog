@@ -23,6 +23,6 @@ lm.login_view = 'login'
 lm.init_app(app)
 
 
-from app.blue_prints import admin, base, python
+from app.blue_prints import admin, base, python, matlab
 
 

@@ -7,75 +7,18 @@
     <div class="main-content">
         <div class="main-body container">
             <div class="row">
-                {% include "side_nav.html" %}
-                <div class="col-md-2 side content-wrap"  id="normal-side-nav">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li role="presentation" class="side-link" id="side-index">
-                            <span class="icon icon-book"></span>&nbsp;目录
-                        </li>
-                        <li role="presentation" class="side-link">
-                            <a href="{{ url_for('python_bp.intro') }}">第一章：Python 前言</a>
-                        </li>
-                        <li role="presentation" class="side-link ">
-                            <a href="{{ url_for("python_bp.sec_chapter") }}">第二章：搭建环境</a>
-                        </li>
-                        <li role="presentation" class="side-link active">
-                            <a href="{{ url_for("python_bp.thi_chapter") }}">第三章：快速入门</a>
-                        </li>
-                        <li role="presentation" class="side-link">
-                            <a href="#">第四章：基本数据类型</a>
-                        </li>
-                        <li role="presentation" class="side-link">
-                            <a href="#">&nbsp;&nbsp;第一章：基本控制流</a>
-                        </li>
-                        <li role="presentation" class="side-link">
-                            <a href="#">第二章：函数编程</a>
-                        </li>
-                        <li role="presentation" class="side-link">
-                            <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
-                        </li>
-                        <li role="presentation" class="side-link">
-                            <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
-                        </li>
-                        <li role="presentation" class="side-link">
-                            <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
-                        </li>
-                        <li role="presentation" class="side-link">
-                            <a href="#">第三章：函数编程</a>
-                        </li>
-                        <li role="presentation" class="side-link">
-                            <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
-                        </li>
-                        <li role="presentation" class="side-link">
-                            <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
-                        </li>
-                        <li role="presentation" class="side-link">
-                            <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
-                        </li>
-                        <li role="presentation" class="side-link">
-                            <a href="#">第四章：函数编程</a>
-                        </li>
-                        <li role="presentation" class="side-link">
-                            <a href="#">&nbsp;&nbsp;第二章：自定义函数1</a>
-                        </li>
-                        <li role="presentation" class="side-link">
-                            <a href="#">&nbsp;&nbsp;第二章：自定义函数2</a>
-                        </li>
-                        <li role="presentation" class="side-link">
-                            <a href="#">&nbsp;&nbsp;第二章：常用的高阶函数</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-10 content content-wrap">
+                {% include "python/python_side_nav.html" %}
+
+                    <div class="col-md-10 col-xs-12 content content-wrap">
                     <div class="row">
-                        <div class="main-text-header">
+                        <div class="main-text-header col-md-12">
                             <h2>快速入门&nbsp;&nbsp;&nbsp;<small>简单的原理和例子&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small><small>2017.10.13</small></h2>
                         </div>
                         <div class="main-text">
+                            <div class="col-md-12">
 
                             <div class="alert alert-info clearfix" role="alert">
                                 <p class="col-md-10 col-xs-10" style="line-height: 1.5; font-size: 20px; margin-top: 0"><span class="glyphicon glyphicon-paperclip"></span>&nbsp;程序是什么？</p>
-                                <button class="col-md-2 col-xs-2 btn btn-info pull-right" id=""><span class="glyphicon glyphicon-list"></span></button>
                             </div>
 
                             <section>
@@ -112,7 +55,6 @@ Out[1]: ['alibaba', 'alphabet', 'apple', 'google', 'microsoft', 'tencent']</pre>
 
                             <div class="alert alert-info clearfix" role="alert">
                                 <p class="col-md-10 col-xs-10" style="line-height: 1.5; font-size: 20px; margin-top: 0"><span class="glyphicon glyphicon-paperclip"></span>&nbsp;用变量来进行操作（变量名请好好取）</p>
-                                <button class="col-md-2 col-xs-2 btn btn-info pull-right" id=""><span class="glyphicon glyphicon-list"></span></button>
                             </div>
 
                             <section>
@@ -149,7 +91,7 @@ Out[2]: 16105.100000000006
 
 
 
-
+                        </div>
                         </div>
                     </div>
                     <!-- 加载评论区 -->

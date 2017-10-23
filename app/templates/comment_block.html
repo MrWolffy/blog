@@ -5,14 +5,14 @@
             <h3>Comments
                 <a id="comment-switch"><button class="btn btn-info"><span class="glyphicon glyphicon-list"></span></button></a>
                 {% if current_user.username %}
-                    <a id="comment-button" class="pull-right"><button class="btn btn-info">展示/隐藏评论编辑框</button></a>
+                    <a id="comment-button" class="pull-right"><button class="btn btn-info">编辑框</button></a>
                 {% else %}
-                    <a id="comment-info" class="pull-right" href="{{ url_for('base_bp.login') }}"><small>登录后可以评论</small></a>
+                    <a id="comment-info" class="pull-right" href="{{ url_for('base_bp.login') }}"><small>登录后评论</small></a>
                 {% endif %}
             </h3>
         </div>
 
-        {% if user_comment %}
+
             <div class="comment-content-wrap panel-body">
                 <ul class="comment-content list-group">
                     <!--评论编辑窗口-->
@@ -61,30 +61,30 @@
                         </form>
                     </li>
                     <!--具体评论-->
+                    {% if user_comment %}
                     {% for user_com in user_comment %}
                         <li class="comment list-group-item clearfix row" id="{{ user_com[1].id }}">
 
                             <div class="comment-avatar col-md-2">
                                 <img id="test" class="comment-header-avatar img-responsive" src="{{ user_com[0].avatar }}">
                             </div>
-                            <div class="comment-header col-md-10">
+                            <div class="comment-header col-md-10 clearfix">
 
-                                <div class="comment-header-title col-md-10">
-                                    <strong>{{ user_com[1].title }}</strong>
-                                </div>
-                                <div class="reply col-md-2">
+
+                                <h3 class="comment-header-title col-md-10 col-xs-8"><strong>{{ user_com[1].title }}</strong></h3>
+
+                                <span class="reply col-md-2 col-xs-4 pull-right ">
                                     {% if current_user.username %}
-                                    <button class="btn btn-info btn-sm pull-right reply-btn" style="margin-top: 10px">回复</button>
+                                    <button class="btn btn-info btn-sm reply-btn" style=" z-index: 1008">回复</button>
                                     {% endif %}
                                     <!-- 父评论的id -->
                                     <span class="parent-comment-id" style="display: none">{{ user_com[1].id }}</span>
-                                </div>
+                                </span>
 
-
-                                <div class="comment-detail col-md-10">
+                            </div>
+                            <div class="comment-detail col-md-10">
                                     {{ user_com[1].content|safe }}
                                 </div>
-                            </div>
 
                             <div class="comment-from col-md-offset-2 col-md-10">
 

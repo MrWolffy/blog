@@ -64,3 +64,10 @@ ul li{
     display: none;
 }
 
+
+.main-content{
+    margin-top: 50px;
+}
+#change-avatar-input{
+    display: none;
+}

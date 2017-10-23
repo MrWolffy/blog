@@ -1,5 +1,11 @@
+@media screen and (max-width: 769px) {
+    .container{
+        width: 90% !important;
+    }
+}
+
 .container{
-    width: 80% !important;
+    width: 80%;
 }
 
 .side-link{
@@ -37,21 +43,17 @@
 }
 
 .comment-header-title{
-    font: normal 24px/50px arial, "微软雅黑 Light";
+
     padding-left: 20px;
 }
 
 .comment-detail{
     margin-top: 10px;
-    font: normal 18px/50px arial, "微软雅黑 Light";
+
 }
 
 #more:hover{ cursor: pointer}
 
-.dataintable, tr, td{
-    border: solid #ccc 2px;
-    border-collapse: collapse;
-}
 
 ul>li>form{
     display: none;
@@ -81,12 +83,13 @@ ul>li>form{
     margin-top: 50px;
 }
 
+section{
+    margin-bottom: 20px;
+}
+
 /* 模态框样式 */
 .modal-header{
     background: #3367d6;
     color: #ffffff;
 }
 
-@media screen and (max-width: 600px){
-
-}

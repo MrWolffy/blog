@@ -82,7 +82,7 @@
 
                 <a href="{{ url_for('base_bp.home') }}" class="navbar-brand header-link" id="home-link">
                     <p id="home-name">
-                    <span class="icon icon-home" style="height: 30px;">&nbsp;<strong>所有内容</strong></span>
+                    <span class="icon icon-home" style="height: 30px;"><strong>所有内容</strong></span>
                     </p>
                 </a>
 
@@ -101,11 +101,6 @@
                 </li>
                 <li>
                     <a href="#" class="header-link">
-                        历史学
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="header-link">
                         爬虫
                     </a>
                 </li>
@@ -115,7 +110,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="header-link">
+                    <a href="{{ url_for('matlab_bp.intro') }}" class="header-link">
                         MATLAB
                     </a>
                 </li>
@@ -161,6 +156,9 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
+                <a href="http://www.miitbeian.gov.cn/" target="_blank" style="color: black; text-decoration: none;"><p>京ICP备17058367号</p></a>
+            </div>
+            <div class="col-xs-12">
                 <p>Copyright © 2017 简单教程</p>
             </div>
         </div>
@@ -168,4 +166,5 @@
 </div>
 </body>
 <script src="../static/js/tutor.js"></script>
+<script>$('#normal-side-nav-ul li:nth-child({{ chap_num }})').addClass('active');</script>
 </html>

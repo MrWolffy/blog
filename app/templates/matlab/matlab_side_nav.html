@@ -1,0 +1,45 @@
+<!-- 小屏的侧边栏 -->
+<div class="side-nav" id="tiny-side-nav">
+    <ul style="padding-top: 18px; padding-left: 10px;">
+        <li role="presentation" class="tiny-side-link clearfix" id="tiny-side-index" style="font-size: 24px;">
+            <span class="glyphicon glyphicon-book"></span>目录  <button id="fold-side-nav" class="btn btn-info pull-right" style="background-color: #35a9d8; border: 1px solid #ffffff;"><span class="glyphicon glyphicon-remove"></span></button>
+        </li>
+        <li role="presentation" class="tiny-side-link">
+            <a href="{{ url_for('matlab_bp.intro') }}">第一章：概述</a>
+        </li>
+        <li role="presentation" class="tiny-side-link ">
+            <a href="{{ url_for("matlab_bp.sec_chapter") }}">第二章：开始</a>
+        </li>
+        <li role="presentation" class="tiny-side-link">
+            <a href="{{ url_for("matlab_bp.thi_chapter") }}">第三章：MATLAB编程入门</a>
+        </li>
+        <li role="presentation" class="tiny-side-link">
+            <a href="{{ url_for("matlab_bp.four_chapter") }}">第四章：数据类型</a>
+        </li>
+
+
+    </ul>
+</div>
+
+<!-- 大屏的侧边栏 -->
+<div class="col-md-2 side content-wrap"  id="normal-side-nav">
+    <ul class="nav nav-pills nav-stacked" id="normal-side-nav-ul">
+        <li role="presentation" class="side-link" id="side-index">
+            <span class="icon icon-book"></span>&nbsp;目录
+        </li>
+        <li role="presentation" class="side-link">
+            <a href="{{ url_for('matlab_bp.intro') }}">第一章：概述</a>
+        </li>
+        <li role="presentation" class="side-link">
+            <a href="{{ url_for("matlab_bp.sec_chapter") }}">第二章：开始</a>
+        </li>
+        <li role="presentation" class="side-link">
+            <a href="{{ url_for("matlab_bp.thi_chapter") }}">第三章：MATLAB编程入门</a>
+        </li>
+        <li role="presentation" class="side-link">
+            <a href="{{ url_for("matlab_bp.four_chapter") }}">第四章：数据类型</a>
+        </li>
+
+    </ul>
+</div>
+
