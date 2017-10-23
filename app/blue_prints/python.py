@@ -133,4 +133,30 @@ def four_chapter():
                            com_to_sub_dict=com_to_sub_dict
                            )
 
+
+@python_bp.route('/5ch')
+def fifth_chapter():
+    a_id = 5
+    chap_num = 5
+    article = Article.query.filter_by(id=a_id).first()
+    comment = Comment.query.filter_by(article_id=article.id).all()
+    if not comment:
+        user_comment = None
+        com_to_sub_dict = None
+    else:
+        sub_comment_all = [SubComment.query.filter_by(main_comment_id=com.id).all() for com in comment]
+        # sub_comment_all is like [[<SubComment from parent_comment1, content=None.], []]
+
+        com_to_sub_dict = get_sub_dict(sub_comment_all, comment)
+
+        user = [User.query.filter_by(id=com.user_id).first() for com in comment]
+        user_comment = zip(user, comment)
+
+    return render_template('python/python_5ch.html',
+                           chap_num=chap_num+1,
+                           article=article,
+                           user_comment=user_comment,
+                           com_to_sub_dict=com_to_sub_dict
+                           )
+
 app.register_blueprint(python_bp)

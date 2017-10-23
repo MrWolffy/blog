@@ -17,8 +17,12 @@
             <a href="{{ url_for("python_bp.four_chapter") }}">第四章：基本数据类型</a>
         </li>
         <li role="presentation" class="tiny-side-link">
-            <a href="#">第五章：基本数据结构</a>
+            <a href="{{ url_for("python_bp.fifth_chapter") }}">第五章：基本数据结构</a>
         </li>
+        <li role="presentation" class="side-link">
+            <a href="#">后续内容敬请期待</a>
+        </li>
+        <!--
         <li role="presentation" class="tiny-side-link">
             <a href="#">第六章：基本控制流</a>
         </li>
@@ -55,6 +59,7 @@
         <li role="presentation" class="tiny-side-link">
             <a href="#">教程总结</a>
         </li>
+        -->
 
     </ul>
 </div>
@@ -78,8 +83,12 @@
             <a href="{{ url_for("python_bp.four_chapter") }}">第四章：基本数据类型</a>
         </li>
         <li role="presentation" class="side-link">
-            <a href="#">第五章：基本数据结构</a>
+            <a href="{{ url_for("python_bp.fifth_chapter") }}">第五章：基本数据结构</a>
         </li>
+        <li role="presentation" class="side-link">
+            <a href="#">后续内容敬请期待</a>
+        </li>
+        <!--
         <li role="presentation" class="side-link">
             <a href="#">第六章：基本控制流</a>
         </li>
@@ -116,10 +125,7 @@
         <li role="presentation" class="side-link">
             <a href="#">教程总结</a>
         </li>
+        -->
     </ul>
 </div>
-<script>
-    $(function(){
-        $('#normal-side-nav-ul li:nth-child({{ chap_num }})').addClass('active');
-    })
-</script>
+

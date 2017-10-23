@@ -112,7 +112,7 @@
 
                             <section>
                                 <h3>str（字符串）</h3>
-                                <p>字符串是所有文字的集合，包括我们平时使用的各种自然语言。通常用引号包围起来，双引号单引号均可，但切记引号要成对出现。比如‘integer’, "integer"都是是合法的， 但是 'integer"则无法被正确的识别。当然，引号可以层级包裹。如果你在字符串中想用引号表示引用，那么记住在外层和内层使用不同的引号。</p>
+                                <p>字符串是所有文字的集合，包括我们平时使用的各种自然语言。通常用引号包围起来，<strong>双引号单引号（英文输入状态的引号，非中文）</strong>均可，但切记引号要成对出现。比如<code>'integer', "integer"</code>都是是合法的， 但是 <code>'integer"</code>则无法被正确的识别。当然，引号可以层级包裹。如果你在字符串中想用引号表示引用，那么记住在外层和内层使用不同的引号。</p>
                                 <p>如：<code>"he is a 'good' man."</code>是合法的， <code>'he is a "good" man.' </code>也是合法的。</p>
                                 <p>在这里需要额外注意的是，用引号引起来的数字，也是字符串。 <code>'1'</code>, <code>'1.23'</code>这样的数据，其类型依然是字符串，而非int或者float。</p>
                                 <p>如果想将字符串的'1', '1.23'转为数字，可以使用 int(), float()方法。</p>
@@ -131,7 +131,7 @@
                                 <br>
                                 <pre style="background-color:#2b2b2b;color:#c4d5e6;font-family:'Fira Code';font-size:13.5pt;">&gt;&gt;&gt; s2 = <span style="color:#008080;">'a1b1c1d'<br></span>&gt;&gt;&gt; s2<span style="color:#86501f;">.</span>split<span style="color:#78dac3;">(</span><span style="color:#008080;">'1'</span><span style="color:#78dac3;">)<br></span><span style="color:#6617fb;">[</span><span style="color:#008080;">'a'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'b'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'c'</span><span style="color:#cc7832;">, </span><span style="color:#008080;">'d'</span><span style="color:#6617fb;">]</span></pre>
 
-                                <p>第一个例子中，原字符串被分成了三个部分["i'm", 'a', 'student']（这里储存这三个字符串的数据结构叫做数组，我们下一章会讲到），而我们使用的命令 s.split(' ')，注意两个引号中间有一个空格。看到这里你可能已经明白了，我们使用了空格符作为拆分的片段来拆分了原字符串，通过观察原字符串我们发现这三个子字符串之间确实是由空格隔开的。</p>
+                                <p>第一个例子中，原字符串被分成了三个部分["i'm", 'a', 'student']（这里储存这三个字符串的数据结构叫做数组，我们下一章会讲到），而我们使用的命令 <code>s.split(' ')</code>，注意两个引号中间有一个空格。看到这里你可能已经明白了，我们使用了空格符作为拆分的片段来拆分了原字符串，通过观察原字符串我们发现这三个子字符串之间确实是由空格隔开的。</p>
                                 <p>第二个例子可能更明显一些，我们使用了字符串的数字：‘1’来作为拆分的字段，结果也很明显。</p>
 
                                 <p>除了拼凑与拆分，对于英文字符串，还有一个很基本的操作：切换大小写。</p>

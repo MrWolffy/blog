@@ -149,7 +149,6 @@ a.more-link, #header-username{ color: #fff}
         display: block;
         position: fixed;
         left: -60%;
-        top: 0;
         background-color: #35a9d8;
         color: #ffffff !important;
         z-index: 1333;
