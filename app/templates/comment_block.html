@@ -46,10 +46,10 @@
                         </div>
                     </div>
                     <li>
-                        <form class="reply-form-hide">
+                        <form class="reply-form-hide col-md-12">
                             <div class="form-group">
                                 <div class="col-sm-10">
-                                    <script id="container-for-sub-comment" name="sub-comment" type="text/plain" style="width: 100%">  请在这里输入具体的内容</script>
+                                    <script id="container-for-sub-comment" name="sub-comment" type="text/plain" style="width: 100%"></script>
                                 </div>
                                 <div class="col-sm-1">
                                     <a  class="btn btn-info btn-sm btn-sub_com-submit">回复</a>
@@ -64,27 +64,30 @@
                     {% if user_comment %}
                     {% for user_com in user_comment %}
                         <li class="comment list-group-item clearfix row" id="{{ user_com[1].id }}">
+                        <div class="main-comment" style="height: 200px;">
 
-                            <div class="comment-avatar col-md-2">
+                            <div class="comment-avatar col-md-2 col-xs-4">
                                 <img id="test" class="comment-header-avatar img-responsive" src="{{ user_com[0].avatar }}">
                             </div>
-                            <div class="comment-header col-md-10 clearfix">
+                            <div class="comment-header col-md-10 col-xs-8 clearfix">
 
 
-                                <h3 class="comment-header-title col-md-10 col-xs-8"><strong>{{ user_com[1].title }}</strong></h3>
-
-                                <span class="reply col-md-2 col-xs-4 pull-right ">
+                                <h3 class="comment-header-title col-md-12 col-xs-12"><strong>{{ user_com[1].title }}</strong>
+                                <span class="reply col-md-1 col-xs-2 pull-right ">
                                     {% if current_user.username %}
                                     <button class="btn btn-info btn-sm reply-btn" style=" z-index: 1008">回复</button>
                                     {% endif %}
                                     <!-- 父评论的id -->
                                     <span class="parent-comment-id" style="display: none">{{ user_com[1].id }}</span>
                                 </span>
+                                </h3>
+
+
 
                             </div>
                             <div class="comment-detail col-md-10">
-                                    {{ user_com[1].content|safe }}
-                                </div>
+                                <div class="main-comment com-md-12">{{ user_com[1].content|safe }}</div>
+                            </div>
 
                             <div class="comment-from col-md-offset-2 col-md-10">
 
@@ -93,17 +96,19 @@
                                     posted: {{ user_com[1].posted }}
                                 </p>
                             </div>
+                        </div>
                             {% if com_to_sub_dict[user_com[1].id] %}
-                            <div class="sub-comment-block">
+                                <!-- 子评论 -->
+                            <div class="sub-comment-block clearfix">
                                 <ul class="comment-content list-group col-sm-offset-2 col-sm-10">
                                     {% for sub_user_com in com_to_sub_dict[user_com[1].id] %}
-                                    <!-- 子评论 -->
+
                                     <li class="comment list-group-item clearfix row ">
 
-                                        <div class="comment-avatar col-md-2">
+                                        <div class="comment-avatar col-md-2 col-xs-4">
                                             <img id="test" class="comment-header-avatar img-responsive" src="{{ sub_user_com[0].avatar }}">
                                         </div>
-                                        <div class="comment-header col-md-10">
+                                        <div class="comment-header col-md-10 col-xs-8">
 
                                             <div class="reply col-md-2">
                                                 <!-- 父评论的id -->
