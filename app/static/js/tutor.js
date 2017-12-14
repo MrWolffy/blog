@@ -40,10 +40,10 @@ $(function (){
     };
 
     /** 评论框的逻辑 */
-    var width = $('div.comment-detail').width();
+    var width = $('div.comment-detail').width() * 0.8;
     $('.reply-btn').click(function(){
         $(this).fadeOut(600);
-        $(this).parent().parent().next().prepend(
+        $(this).parent().parent().parent().next().append(
             $('.reply-form-hide').fadeIn(600)
         );
     });
@@ -80,7 +80,7 @@ $(function (){
             dataType: 'json'
         }).done(function(data){  /** 成功后弹出提示，再刷新页面 */
             toastr.success(data['info'], '提示信息');
-            setTimeout("window.location.reload()", 5000);
+            setTimeout("window.location.reload()", 3000);
         })
     });
 
